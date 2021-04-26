@@ -12,6 +12,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="usurname">Usurname</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="mandatory">Errooo!!!</string>
+    <string name="log_in_now">Log In Now</string>
 
 </resources>

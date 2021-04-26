@@ -36,6 +36,7 @@ public class ActivityLogIn extends AppCompatActivity {
         });
 
     }
+
     public void loginUser() {
         String correo = email.getEditText().getText().toString().trim();
         String pwd = password.getEditText().getText().toString().trim();
@@ -44,11 +45,9 @@ public class ActivityLogIn extends AppCompatActivity {
         if (TextUtils.isEmpty(correo)) {
             msgEmail = "Enter your email";
             email.setError(msgEmail);
-            return;
         } else if (TextUtils.isEmpty(pwd)) {
             msgPass = "Enter your password";
             password.setError(msgPass);
-            return;
         } else{
             email.setErrorEnabled(msgEmail != null);
             password.setErrorEnabled(msgPass != null);
@@ -78,6 +77,7 @@ public class ActivityLogIn extends AppCompatActivity {
             });
         }*/
     }
+
     /**
      * Este método sirve para hacer la animación hacia el sign up activity
      *
@@ -85,7 +85,7 @@ public class ActivityLogIn extends AppCompatActivity {
      */
     public void loginToRegisterSidebarClick(View view) {
         startActivity(new Intent(this, ActivitySignUp.class));
-        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
+        overridePendingTransition(R.anim.slide_in_right, android.R.anim.fade_out);
     }
 
 }

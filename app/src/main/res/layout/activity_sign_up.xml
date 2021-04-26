@@ -48,6 +48,7 @@ android:fitsSystemWindows="true">
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                app:startIconDrawable="@drawable/ic_person"
                 android:textColorHint="@color/colorAccent"
                 app:hintTextColor="@color/colorAccent"
                 >
@@ -64,6 +65,7 @@ android:fitsSystemWindows="true">
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                app:startIconDrawable="@drawable/ic_email"
                 android:textColorHint="@color/colorAccent"
                 app:hintTextColor="@color/colorAccent">
                 <EditText
@@ -79,8 +81,9 @@ android:fitsSystemWindows="true">
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textColorHint="@color/colorAccent"
+                app:startIconDrawable="@drawable/ic_lock"
                 app:passwordToggleEnabled="true"
+                android:textColorHint="@color/colorAccent"
                 app:hintTextColor="@color/colorAccent">
                 <EditText
                     android:id="@+id/editTextPassword"
@@ -95,6 +98,8 @@ android:fitsSystemWindows="true">
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                app:startIconDrawable="@drawable/ic_lock_open"
+                app:passwordToggleEnabled="true"
                 android:textColorHint="@color/colorAccent"
                 app:hintTextColor="@color/colorAccent">
                 <EditText
@@ -105,10 +110,10 @@ android:fitsSystemWindows="true">
                     android:maxLines="1"/>
             </com.google.android.material.textfield.TextInputLayout>
             <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                android:id="@+id/continueRegistrationButton"
+                android:id="@+id/RegistrationButton"
                 style="@style/loginButton"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp"
                 android:text="@string/sign_up"
                 app:initialCornerAngle="27dp"
@@ -117,5 +122,17 @@ android:fitsSystemWindows="true">
                 app:spinning_bar_width="4dp" />
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        style="@style/parent"
+        android:layout_marginTop="@dimen/loginViewsMargin"
+        android:onClick="registerToLoginSidebarClick"
+        android:text="@string/log_in_now"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>
