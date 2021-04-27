@@ -34,7 +34,9 @@ public class ActivitySignUp extends AppCompatActivity {
     }
 
     private void register() {
-        String correo = email.getEditText().getText().toString().trim();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        /*String correo = email.getEditText().getText().toString().trim();
         String usuario = username.getEditText().getText().toString().trim();
         String pwd = passwd.getEditText().getText().toString().trim();
         String confirmPwd = confirmPasswd.getEditText().getText().toString().trim();
@@ -64,7 +66,7 @@ public class ActivitySignUp extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Email and Password added", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
-        }
+        }*/
     }
     private boolean isValidEmail(String correo) {
         return (!TextUtils.isEmpty(correo) && Patterns.EMAIL_ADDRESS.matcher(correo).matches());

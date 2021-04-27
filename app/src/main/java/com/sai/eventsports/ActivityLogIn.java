@@ -1,6 +1,7 @@
 package com.sai.eventsports;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 public class ActivityLogIn extends AppCompatActivity {
     TextInputLayout email,password;
     Button btnLogIn;
+    TextView txt_forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +30,27 @@ public class ActivityLogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         email = findViewById(R.id.textInputEmailLogin);
         password = findViewById(R.id.textInputPasswordLogin);
+        txt_forgot_password = findViewById(R.id.txt_forget);
         btnLogIn = findViewById(R.id.btn_login);
+
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginUser();
             }
         });
+        txt_forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialogForgotPassword();
+            }
+        });
 
     }
 
     public void loginUser() {
-        String correo = email.getEditText().getText().toString().trim();
+        startActivity(new Intent(this, MainActivity.class));
+        /*String correo = email.getEditText().getText().toString().trim();
         String pwd = password.getEditText().getText().toString().trim();
         String msgEmail = null,msgPass = null;
 
@@ -48,12 +60,7 @@ public class ActivityLogIn extends AppCompatActivity {
         } else if (TextUtils.isEmpty(pwd)) {
             msgPass = "Enter your password";
             password.setError(msgPass);
-        } else{
-            email.setErrorEnabled(msgEmail != null);
-            password.setErrorEnabled(msgPass != null);
-            startActivity(new Intent(this, MainActivity.class));
-        }
-        /*else if (pwd.length() < 6) {
+        } else if (pwd.length() < 6) {
             passwd.setError("Minimum length of password should be 6");
             return;
         } else if (!isValidEmail(correo)) {
@@ -64,6 +71,8 @@ public class ActivityLogIn extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        email.setErrorEnabled(msgEmail != null);
+                        password.setErrorEnabled(msgPass != null);
                         USERUID = mAuth.getCurrentUser().getUid();
                         Intent accessIntent = new Intent(getApplicationContext(), MapsActivity.class);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -88,4 +97,17 @@ public class ActivityLogIn extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, android.R.anim.fade_out);
     }
 
+    /**
+     * En este método mostramos la alerta de recuperar la contraseña
+     */
+    private void showAlertDialogForgotPassword() {
+        // Here we setup the alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(getLayoutInflater().inflate(R.layout.activity_forgot_password,
+                null));
+
+        // Here we create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }
