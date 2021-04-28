@@ -1,56 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".SpecifyCategory">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+    <include layout="@layout/bottom_sheet"/>
+    <include layout="@layout/contentremain"/>
 
-        <Button
-            android:id="@+id/expand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Expand"/>
-        <Button
-            android:id="@+id/collapse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Collapse"/>
-
-        <TextView
-            android:id="@+id/state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="State"
-            android:textSize="30sp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"/>
-    </LinearLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/bottom_sheet"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@color/cardview_shadow_start_color"
-        app:layout_constraintHeight_max="55dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:textSize="16sp"
-            android:text="akisodpaSISISISISISISISISISISIDSISISISISISISISIUDDDDDDDDD
-            DDDDUDUUUUUUJwasedddddddddddddddddddddddddddddddddddddddddddddddaaaasdasdasda">
-
-        </TextView>
-
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
