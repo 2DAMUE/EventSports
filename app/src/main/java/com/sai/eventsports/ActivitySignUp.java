@@ -1,5 +1,6 @@
 package com.sai.eventsports;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,11 +11,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class ActivitySignUp extends AppCompatActivity {
     private TextInputLayout email,username,passwd,confirmPasswd;
     private Button btnSignUp;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +33,22 @@ public class ActivitySignUp extends AppCompatActivity {
         passwd = findViewById(R.id.textInputPassword);
         confirmPasswd = findViewById(R.id.textInputConfirmPassword);
         btnSignUp = findViewById(R.id.RegistrationButton);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register();
+                signUp();
             }
         });
     }
 
-    private void register() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        /*String correo = email.getEditText().getText().toString().trim();
-        String usuario = username.getEditText().getText().toString().trim();
-        String pwd = passwd.getEditText().getText().toString().trim();
-        String confirmPwd = confirmPasswd.getEditText().getText().toString().trim();
+    private void signUp() {
+        String correo = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
+        String usuario = Objects.requireNonNull(username.getEditText()).getText().toString().trim();
+        String pwd = Objects.requireNonNull(passwd.getEditText()).getText().toString().trim();
+        String confirmPwd = Objects.requireNonNull(confirmPasswd.getEditText()).getText().toString().trim();
 
         if (TextUtils.isEmpty(correo)){
             email.setError("Enter your email");
@@ -63,11 +72,25 @@ public class ActivitySignUp extends AppCompatActivity {
             email.setError("This is not a valid email");
             return;
         } else {
-            Toast.makeText(getApplicationContext(), "Email and Password added", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        }*/
+            firebaseAuthentification(correo,pwd);
+        }
     }
+
+    private void firebaseAuthentification(String correo, String pwd) {
+        firebaseAuth.createUserWithEmailAndPassword(correo,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Email and Password added", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
     private boolean isValidEmail(String correo) {
         return (!TextUtils.isEmpty(correo) && Patterns.EMAIL_ADDRESS.matcher(correo).matches());
     }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,11 +19,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
 
 public class ActivityLogIn extends AppCompatActivity {
-    TextInputLayout email,password;
-    Button btnLogIn;
-    TextView txt_forgot_password;
+    private TextInputLayout email,password;
+    private Button btnLogIn;
+    private TextView txt_forgot_password;
+    private FirebaseAuth firebaseAuth;
+
+    public static String USERUID = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,8 @@ public class ActivityLogIn extends AppCompatActivity {
         password = findViewById(R.id.textInputPasswordLogin);
         txt_forgot_password = findViewById(R.id.txt_forget);
         btnLogIn = findViewById(R.id.btn_login);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +58,8 @@ public class ActivityLogIn extends AppCompatActivity {
     }
 
     public void loginUser() {
-        startActivity(new Intent(this, MainActivity.class));
-        /*String correo = email.getEditText().getText().toString().trim();
-        String pwd = password.getEditText().getText().toString().trim();
+        String correo = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
+        String pwd = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
         String msgEmail = null,msgPass = null;
 
         if (TextUtils.isEmpty(correo)) {
@@ -61,20 +69,18 @@ public class ActivityLogIn extends AppCompatActivity {
             msgPass = "Enter your password";
             password.setError(msgPass);
         } else if (pwd.length() < 6) {
-            passwd.setError("Minimum length of password should be 6");
-            return;
+            msgPass = "Minimum length of password should be 6";
+            password.setError(msgPass);
         } else if (!isValidEmail(correo)) {
-            email.setError("This is not a valid email");
-            return;
+            msgEmail = "This is not a valid email";
+            email.setError(msgEmail);
         } else {
-            mAuth.signInWithEmailAndPassword(correo, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            firebaseAuth.signInWithEmailAndPassword(correo, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        email.setErrorEnabled(msgEmail != null);
-                        password.setErrorEnabled(msgPass != null);
-                        USERUID = mAuth.getCurrentUser().getUid();
-                        Intent accessIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                        USERUID = firebaseAuth.getCurrentUser().getUid();
+                        Intent accessIntent = new Intent(getApplicationContext(), MainActivity.class);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(accessIntent);
@@ -84,7 +90,11 @@ public class ActivityLogIn extends AppCompatActivity {
                     }
                 }
             });
-        }*/
+        }
+    }
+
+    private boolean isValidEmail(String correo) {
+        return (!TextUtils.isEmpty(correo) && Patterns.EMAIL_ADDRESS.matcher(correo).matches());
     }
 
     /**
