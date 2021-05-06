@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "798721043811",
+    "firebase_url": "https://stellar-operand-305716-default-rtdb.firebaseio.com",
+    "project_id": "stellar-operand-305716",
+    "storage_bucket": "stellar-operand-305716.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798721043811:android:fabcd8c25de5ed7024f756",
+        "android_client_info": {
+          "package_name": "com.sai.eventsports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798721043811-csuoh1kepb5hpqam8m5hj2d7qr4m0bjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sai.eventsports",
+            "certificate_hash": "a1933381086aeacebe8170cf48a44771ffb350b9"
+          }
+        },
+        {
+          "client_id": "798721043811-203rn14r44l76l0nn121vf49n1fp770h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZHS4JLZvEfRe7mnX0zR62lvMNqW34rSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798721043811-203rn14r44l76l0nn121vf49n1fp770h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
