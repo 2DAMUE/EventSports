@@ -15,34 +15,13 @@
       },
       "oauth_client": [
         {
-          "client_id": "798721043811-203rn14r44l76l0nn121vf49n1fp770h.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDZHS4JLZvEfRe7mnX0zR62lvMNqW34rSo"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "798721043811-203rn14r44l76l0nn121vf49n1fp770h.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:798721043811:android:a17c44255a3d6dbc24f756",
-        "android_client_info": {
-          "package_name": "com.uem.exament2"
-        }
-      },
-      "oauth_client": [
+          "client_id": "798721043811-csuoh1kepb5hpqam8m5hj2d7qr4m0bjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sai.eventsports",
+            "certificate_hash": "a1933381086aeacebe8170cf48a44771ffb350b9"
+          }
+        },
         {
           "client_id": "798721043811-203rn14r44l76l0nn121vf49n1fp770h.apps.googleusercontent.com",
           "client_type": 3

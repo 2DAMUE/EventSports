@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -44,6 +45,7 @@ public class ActivitySignUp extends AppCompatActivity {
         });
     }
 
+    //****************** CORREO ****************
     private void signUp() {
         String correo = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
         String usuario = Objects.requireNonNull(username.getEditText()).getText().toString().trim();
@@ -82,6 +84,9 @@ public class ActivitySignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "Email and Password added", Toast.LENGTH_LONG).show();
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    String userId = firebaseUser.getUid();
+                    ActivityLogIn.USERUID = userId;
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -94,6 +99,8 @@ public class ActivitySignUp extends AppCompatActivity {
     private boolean isValidEmail(String correo) {
         return (!TextUtils.isEmpty(correo) && Patterns.EMAIL_ADDRESS.matcher(correo).matches());
     }
+
+    //****************** ACCIONES ***************
 
     /**
      * Este método sirve para hacer la animación hacia el sign up activity
