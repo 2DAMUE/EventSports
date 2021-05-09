@@ -15,6 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventSports"
         tools:targetApi="m">
+
+        <activity android:name=".ActivityProfile" />
         <activity android:name=".ActivityForgotPassword" />
         <activity
             android:name=".ActivitySignUp"
@@ -30,6 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityMain" android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>
