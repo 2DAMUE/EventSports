@@ -12,7 +12,6 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -142,7 +141,7 @@ public class ActivityLogIn extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         USERUID = firebaseAuth.getCurrentUser().getUid();
-                        Intent accessIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent accessIntent = new Intent(getApplicationContext(), ActivityMain.class);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(accessIntent);
@@ -228,7 +227,7 @@ public class ActivityLogIn extends AppCompatActivity {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         USERUID = user.getUid();
                         //CollectUserData.updateUI(user);
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ActivityMain.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
