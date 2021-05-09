@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 
 import java.util.ArrayList;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         MiAdaptadorMain listAdapter = new MiAdaptadorMain(elements,this);
         RecyclerView recyclerView = findViewById(R.id.mi_RecyclerMain);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
     }
 }
