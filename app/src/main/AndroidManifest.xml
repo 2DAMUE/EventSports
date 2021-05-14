@@ -17,14 +17,14 @@
         tools:targetApi="m">
 
         <activity android:name=".ActivityProfile" />
-        <activity android:name=".ActivityForgotPassword" />
+        <activity android:name=".splash_login_register.ActivityForgotPassword" />
         <activity
-            android:name=".ActivitySignUp"
+            android:name=".splash_login_register.ActivitySignUp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivityLogIn"
+            android:name=".splash_login_register.ActivityLogIn"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".SplashScreen" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".splash_login_register.SplashScreen" android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

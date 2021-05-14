@@ -9,7 +9,7 @@
     android:focusableInTouchMode="true"
     android:gravity="center"
     android:fitsSystemWindows="true"
-    tools:context=".ActivityLogIn">
+    tools:context=".splash_login_register.ActivityLogIn">
 
     <ImageView
         android:id="@+id/img_ilustration"

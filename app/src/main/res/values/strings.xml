@@ -17,7 +17,10 @@
     <string name="has_olvidado_tu_contrase_a">¿Has olvidado tu Contraseña?</string>
     <string name="texto_forgotpasswd">Escribe tu Email y te llegara un correo con tu nueva contraseña.</string>
     <string name="enviar">Enviar</string>
+    <!-- MAIN -->
+    <string name="main">Deportes</string>
+    <string name="otros">Otros</string>
+    <string name="deporte_del_dia">Deporte del dia</string>
     <!-- PROFILE -->
     <string name="profile">Profile</string>
-
 </resources>
