@@ -1,6 +1,7 @@
 package com.sai.eventsports;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -41,6 +42,7 @@ public class ActivitySignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signUp();
+                alertRegister();
             }
         });
     }
@@ -110,5 +112,28 @@ public class ActivitySignUp extends AppCompatActivity {
     public void registerToLoginSidebarClick(View view) {
         startActivity(new Intent(this, ActivityLogIn.class));
         overridePendingTransition(R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
+
+    /**
+     * Show alertRegister
+     */
+    private void alertRegister() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertRegister();
+            }
+        });
+    }
+
+    private void showAlertRegister() {
+        // Here we setup the alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(getLayoutInflater().inflate(R.layout.activity_register_alert,
+                null));
+
+        // Here we create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
