@@ -2,22 +2,21 @@ package com.sai.eventsports;
 
 public class ImagenDeporte {
 
-   /* String url = "";*/
-    String nombre = "";
+    private int url;
+    private String nombre;
 
-    public ImagenDeporte(/*String url,*/ String nombre){
-
-       // this.url = url;
+    public ImagenDeporte(String nombre, int url){
+        this.url = url;
         this.nombre = nombre;
     }
 
-   /* public String getUrl() {
+    public int getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(int url) {
         this.url = url;
-    }*/
+    }
 
     public String getNombre() {
         return nombre;

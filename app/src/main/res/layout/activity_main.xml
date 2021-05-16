@@ -4,17 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ActivityMain">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_profile"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:title="@string/main"
+        app:titleTextColor="@color/colorAccent"
+        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mi_RecyclerMain"
-        android:layout_width="371dp"
+        android:layout_width="350dp"
         android:layout_height="233dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideLineHTopRecyler"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/txtOtros"
         app:layout_constraintEnd_toStartOf="@+id/guideLineRecylerV2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/guideLineRecylerV1" />
+        app:layout_constraintStart_toEndOf="@+id/guideLineRecylerV1"/>
 
     <TextView
         android:id="@+id/txtOtros"
@@ -22,92 +31,36 @@
         android:layout_height="27dp"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="4dp"
-        android:text="Otros"
+        android:layout_marginTop="20dp"
+        android:text="@string/otros"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideLineHButtomTxt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideLineHMedio" />
+        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="4dp"
         android:src="@drawable/baseline_east_24"
-        app:layout_constraintBottom_toTopOf="@+id/guideLineHButtomTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.967"
-        app:layout_constraintStart_toEndOf="@+id/txtOtros"
-        app:layout_constraintTop_toBottomOf="@+id/guideLineHMedio" />
+        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/txtOtros" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView2"
-        android:layout_width="368dp"
+        android:layout_width="355dp"
         android:layout_height="354dp"
         android:src="@drawable/futbol"
-        app:layout_constraintBottom_toTopOf="@+id/guideLineBottomImage"
+        android:layout_marginTop="70dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideLineRecylerV2"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/guideLineRecylerV1"
-        app:layout_constraintTop_toBottomOf="@+id/guideLineHTop"
         app:shapeAppearanceOverlay="@style/RoundedSquare" />
-
-    <LinearLayout
-        android:id="@+id/guideLineHTop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.08"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/guideLineBottomImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/mi_RecyclerMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.58"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/guideLineHMedio"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/mi_RecyclerMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.60"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/guideLineHButtomTxt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/guideLineHTopRecyler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.655"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/guideLineHTopRecyler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/mi_RecyclerMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.665"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/guideLineRecylerV1"
@@ -134,7 +87,7 @@
         android:id="@+id/textView2"
         android:layout_width="175dp"
         android:layout_height="104dp"
-        android:text="Deporte del dia"
+        android:text="@string/deporte_del_dia"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"

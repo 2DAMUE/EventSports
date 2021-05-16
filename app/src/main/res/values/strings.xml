@@ -4,10 +4,10 @@
     <string name="login_texto">Log In</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password">Olvidaste tu Contraseña?</string>
     <string name="login">Login</string>
     <string name="new_user_register_now">Sign Up Now</string>
-    <string name="use_other_methods">Use other Methods</string>
+    <string name="use_other_methods">Otros Metodos</string>
     <!-- SIGNUP -->
     <string name="sign_up">Sign Up</string>
     <string name="usurname">Usurname</string>
@@ -17,7 +17,20 @@
     <string name="has_olvidado_tu_contrase_a">¿Has olvidado tu Contraseña?</string>
     <string name="texto_forgotpasswd">Escribe tu Email y te llegara un correo con tu nueva contraseña.</string>
     <string name="enviar">Enviar</string>
+    <!-- MAIN -->
+    <string name="main">Deportes</string>
+    <string name="otros">Otros</string>
+    <string name="deporte_del_dia">Deporte del dia</string>
     <!-- PROFILE -->
     <string name="profile">Profile</string>
-
+    <!-- NEW EVENT -->
+    <string name="new_event">New Event</string>
+    <string name="escoge_una_imagen_para_su_evento">Escoge una imagen para su Evento</string>
+    <string name="datos">DATOS</string>
+    <string name="t_tulo">Título</string>
+    <string name="direcci_n">Dirección</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="n">Nº</string>
+    <string name="tipo_clase_evento">Tipo(Clase/Evento)</string>
+    <string name="crear">Crear</string>
 </resources>

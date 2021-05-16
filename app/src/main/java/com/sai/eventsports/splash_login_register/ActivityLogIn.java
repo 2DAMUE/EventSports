@@ -1,4 +1,4 @@
-package com.sai.eventsports;
+package com.sai.eventsports.splash_login_register;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +29,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.sai.eventsports.ActivityMain;
+import com.sai.eventsports.R;
 
 import java.util.Objects;
 
@@ -80,6 +82,18 @@ public class ActivityLogIn extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         googleLoginClick();
 
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null){
+            USERUID = firebaseUser.getUid();
+            Intent accessIntent = new Intent(getApplicationContext(), ActivityMain.class);
+            accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(accessIntent);
+        }
     }
 
     /**

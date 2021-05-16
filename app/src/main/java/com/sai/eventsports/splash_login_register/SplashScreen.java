@@ -1,4 +1,4 @@
-package com.sai.eventsports;
+package com.sai.eventsports.splash_login_register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.sai.eventsports.R;
 
 
 public class SplashScreen extends AppCompatActivity {

@@ -1,8 +1,10 @@
-package com.sai.eventsports;
+package com.sai.eventsports.splash_login_register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.sai.eventsports.R;
 
 public class ActivityForgotPassword extends AppCompatActivity {
 

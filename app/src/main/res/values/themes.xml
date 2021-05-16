@@ -35,9 +35,28 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+    <style name="modifiedEditText2">
+        <item name="android:textSize">@dimen/newsMoreTextSize</item>
+        <item name="android:background">@drawable/edittext_radious2</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="parent2" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">90dp</item>
+    </style>
+    <style name="parent3" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
     <!-- BOTON -->
     <style name="loginButton" parent="viewParent">
         <item name="android:background">@drawable/button_background</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="newEventButton" parent="viewParent">
+        <item name="android:background">@drawable/button_background2</item>
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
