@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +18,9 @@
         tools:targetApi="m">
         <activity
             android:name=".ActivityNewEvent"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActivityRegisterAlert"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ActivityProfile" />
         <activity android:name=".splash_login_register.ActivityForgotPassword" />

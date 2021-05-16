@@ -64,6 +64,7 @@ public class ActivityLogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginUser();
+
             }
         });
         txt_forgot_password.setOnClickListener(new View.OnClickListener() {

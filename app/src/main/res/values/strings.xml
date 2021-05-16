@@ -33,4 +33,11 @@
     <string name="n">Nº</string>
     <string name="tipo_clase_evento">Tipo(Clase/Evento)</string>
     <string name="crear">Crear</string>
+    <!-- REGISTER ALERT -->
+    <string name="login_Phone_Number_hint">Phone Number</string>
+    <string name="login_Phone_Number_txt">Phone Number:</string>
+    <string name="login_Profile_Photo">Profile Photo</string>
+    <string name="login_Profile_Photo_txt">Profile Photo:</string>
+    <string name="save">Save</string>
+    <string name="introduce_imagen_de_perfil_y_telefono_para_comenzar">Introduce imagen de perfil y telefono para comenzar</string>
 </resources>

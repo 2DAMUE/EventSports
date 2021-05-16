@@ -1,6 +1,7 @@
 package com.sai.eventsports.splash_login_register;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.sai.eventsports.ActivityMain;
+import com.sai.eventsports.ActivityRegisterAlert;
 import com.sai.eventsports.R;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
@@ -47,7 +49,6 @@ public class ActivitySignUp extends AppCompatActivity {
             }
         });
     }
-
     //****************** CORREO ****************
     private void signUp() {
         String correo = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
@@ -90,7 +91,7 @@ public class ActivitySignUp extends AppCompatActivity {
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     String userId = firebaseUser.getUid();
                     ActivityLogIn.USERUID = userId;
-                    Intent intent = new Intent(getApplicationContext(), ActivityMain.class);
+                    Intent intent = new Intent(getApplicationContext(), ActivityRegisterAlert.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

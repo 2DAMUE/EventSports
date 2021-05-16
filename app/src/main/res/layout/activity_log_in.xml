@@ -56,7 +56,6 @@
             app:startIconDrawable="@drawable/ic_email"
             android:textColorHint="@color/azul_medio"
             app:hintTextColor="@color/azul_medio">
-
             <EditText
                 android:id="@+id/editTextEmail"
                 style="@style/modifiedEditText"
@@ -88,7 +87,6 @@
             style="@style/viewParent"
             android:layout_gravity="end"
             android:layout_marginTop="10dp"
-
             android:text="@string/forgot_password"
             android:textColor="@color/darck_blue"
             android:textSize="@dimen/newsMoreTextSize"
