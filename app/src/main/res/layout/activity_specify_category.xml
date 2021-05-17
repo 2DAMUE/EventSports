@@ -8,12 +8,29 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".SpecifyCategory">
+<androidx.constraintlayout.widget.ConstraintLayout
+    app:layout_collapseMode="parallax"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         layout="@layout/bottom_sheet"
-
-        />
+        android:layout_marginTop="280dp"
+        android:layout_height="512dp"
+        android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"/>
 
     <include layout="@layout/contentremain" />
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

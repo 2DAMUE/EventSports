@@ -33,12 +33,13 @@
         <activity
             android:name=".splash_login_register.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
-        <activity android:name=".SpecifyCategory"/>
+        <activity android:name=".SpecifyCategory">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity
             android:name=".ActivityMain"
             android:theme="@style/AppTheme.NoActionBar" />
