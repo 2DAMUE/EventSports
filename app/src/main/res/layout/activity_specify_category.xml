@@ -9,7 +9,11 @@
     android:background="@color/white"
     tools:context=".SpecifyCategory">
 
-    <include layout="@layout/bottom_sheet"/>
-    <include layout="@layout/contentremain"/>
+    <include
+        layout="@layout/bottom_sheet"
+
+        />
+
+    <include layout="@layout/contentremain" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
