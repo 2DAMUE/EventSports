@@ -24,7 +24,7 @@ public class SpecifyCategory extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specify_category);
 
-        btnBottomSheet = findViewById(R.id.btnBottomSheet);
+        btnBottomSheet = findViewById(R.id.clases);
         action = findViewById(R.id.action);
         linearLayout= findViewById(R.id.bottomSheet);
 

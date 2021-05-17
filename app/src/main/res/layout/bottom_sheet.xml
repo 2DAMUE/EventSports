@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheet"
     android:orientation="vertical"
@@ -13,14 +14,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        android:layout_height="220dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal"
         android:weightSum="4">
 
         <Button
             style="@style/modifiedEditText"
+            android:id="@+id/eventos"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -33,6 +36,7 @@
 
         <Button
             style="@style/modifiedEditText"
+            android:id="@+id/clases"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
