@@ -56,4 +56,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     //U Know?
     implementation 'androidx.multidex:multidex:2.0.1'
+    //Desplegable
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
 }
