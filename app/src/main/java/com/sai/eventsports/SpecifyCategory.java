@@ -35,13 +35,11 @@ public class SpecifyCategory extends AppCompatActivity{
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch(newState){
                     case BottomSheetBehavior.STATE_HIDDEN:
-                        btnBottomSheet.setText("Expand the bottom Sheet");
                         break;
                         case BottomSheetBehavior.STATE_EXPANDED:
-                            btnBottomSheet.setText("Close the bottom sheet");
                             break;
                             case BottomSheetBehavior.STATE_COLLAPSED:
-                                btnBottomSheet.setText("Expand the bottom sheet");
+                                btnBottomSheet.setText("Closed");
                                 break;
                                 case BottomSheetBehavior.STATE_DRAGGING:
                                     break;
@@ -68,10 +66,8 @@ public class SpecifyCategory extends AppCompatActivity{
             public void onClick(View v) {
                 if(bottomSheetBehavoir.getState()!=BottomSheetBehavior.STATE_EXPANDED){
                     bottomSheetBehavoir.setState(BottomSheetBehavior.STATE_EXPANDED);
-                    btnBottomSheet.setText("Close the bottom sheet");
                 }else{
                     bottomSheetBehavoir.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    btnBottomSheet.setText("Expand the bottomSheet");
                 }
 
             }
