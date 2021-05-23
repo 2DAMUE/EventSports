@@ -8,12 +8,45 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class ActivityProfile extends AppCompatActivity {
+
+    private BottomNavigationView bnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        bnv = findViewById(R.id.nav_profile);
+        bnv.setSelectedItemId(R.id.navigation_profile);
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_maps:
+                        startActivity(new Intent(getApplicationContext(), ActivityMaps.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_new_event:
+                        startActivity(new Intent(getApplicationContext(), ActivityNewEvent.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_community:
+                        startActivity(new Intent(getApplicationContext(), ActivityCommunity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_profile:
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     /**
