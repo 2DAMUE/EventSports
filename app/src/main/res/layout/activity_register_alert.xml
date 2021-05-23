@@ -56,7 +56,7 @@
                 android:id="@+id/tvProfilePhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-107dp"
+                android:layout_marginStart="-80dp"
                 android:layout_marginTop="20dp"
                 android:textSize="18sp"
                 android:text="@string/login_Profile_Photo_txt"
@@ -81,7 +81,7 @@
                 android:id="@+id/tvPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-100dp"
+                android:layout_marginStart="-107dp"
                 android:text="@string/login_Phone_Number_txt"
                 android:textSize="18sp"
                 android:textStyle="bold"/>

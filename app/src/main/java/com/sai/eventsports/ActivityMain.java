@@ -1,18 +1,22 @@
 package com.sai.eventsports;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -20,25 +24,46 @@ import java.util.List;
 
 public class ActivityMain extends AppCompatActivity {
 
-    List<ImagenDeporte> elements;
+    private List<ImagenDeporte> elements;
     protected ImageView imagenDeporte;
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
+    private BottomNavigationView bnv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //firebaseAuth = ActivityLogIn.recogerInstancia();
-        // Configure Google Sign In
-        /*GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
+        bnv = findViewById(R.id.nav_home);
+        bnv.setSelectedItemId(R.id.navigation_home);
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        return true;
+                    case R.id.navigation_maps:
+                        startActivity(new Intent(getApplicationContext(), ActivityMaps.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_new_event:
+                        startActivity(new Intent(getApplicationContext(), ActivityNewEvent.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_community:
+                        startActivity(new Intent(getApplicationContext(), ActivityCommunity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.navigation_profile:
+                        startActivity(new Intent(getApplicationContext(), ActivityProfile.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);*/
         init();
     }
 
@@ -64,6 +89,17 @@ public class ActivityMain extends AppCompatActivity {
         recyclerView.setAdapter(listAdapter);
     }
 }
+//firebaseAuth = ActivityLogIn.recogerInstancia();
+// Configure Google Sign In
+        /*GoogleSignInOptions gso = new GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);*/
+
+
 /*Button btn = findViewById(R.id.signout);
 btn.setOnClickListener(new View.OnClickListener() {
     @Override
