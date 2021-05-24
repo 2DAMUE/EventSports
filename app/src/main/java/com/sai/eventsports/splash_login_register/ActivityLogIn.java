@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.sai.eventsports.ActivityMain;
+import com.sai.eventsports.ActivityRegisterAlert;
 import com.sai.eventsports.R;
 
 import java.util.Objects;
@@ -241,14 +242,14 @@ public class ActivityLogIn extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         USERUID = user.getUid();
-                        //CollectUserData.updateUI(user);
-                        Intent intent = new Intent(getApplicationContext(), ActivityMain.class);
+                        String username = user.getEmail();
+                        Intent intent = new Intent(getApplicationContext(), ActivityRegisterAlert.class);
+                        intent.putExtra("userGoogle",username);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-                        //updateUI(null);
                     }
                 }
             });

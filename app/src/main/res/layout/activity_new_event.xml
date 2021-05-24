@@ -76,106 +76,123 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputTitulo"
+                    style="@style/parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="@dimen/loginViewsMargin2"
+                    android:layout_marginEnd="20dp"
+                    android:textColorHint="@color/azul_medio"
+                    app:hintTextColor="@color/azul_medio">
+
+                    <EditText
+                        android:id="@+id/editTextTitulo"
+                        style="@style/modifiedEditText2"
+                        android:hint="@string/t_tulo"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputTitulo"
+                        android:id="@+id/textInputDireccion"
                         style="@style/parent"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="@dimen/loginViewsMargin2"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="90dp"
                         android:textColorHint="@color/azul_medio"
                         app:hintTextColor="@color/azul_medio">
 
                         <EditText
-                            android:id="@+id/editTextTitulo"
+                            android:id="@+id/editTextDireccion"
                             style="@style/modifiedEditText2"
-                            android:hint="@string/t_tulo"
+                            android:hint="@string/direcci_n"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputDireccion"
-                            style="@style/parent"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="@dimen/loginViewsMargin2"
-                            android:layout_marginEnd="90dp"
-                            android:textColorHint="@color/azul_medio"
-                            app:hintTextColor="@color/azul_medio">
-
-                            <EditText
-                                android:id="@+id/editTextDireccion"
-                                style="@style/modifiedEditText2"
-                                android:hint="@string/direcci_n"
-                                android:inputType="textEmailAddress"
-                                android:maxLines="1" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputNum"
-                            style="@style/parent3"
-                            android:layout_marginStart="-80dp"
-                            android:layout_marginTop="@dimen/loginViewsMargin2"
-                            android:layout_marginEnd="0dp"
-                            android:textColorHint="@color/azul_medio"
-                            app:hintTextColor="@color/azul_medio">
-
-                            <EditText
-                                android:id="@+id/editTextNum"
-                                style="@style/modifiedEditText2"
-                                android:hint="@string/n"
-                                android:inputType="textEmailAddress"
-                                android:maxLines="1" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputDescripcion"
-                        style="@style/parent2"
-                        android:layout_marginStart="20dp"
+                        android:id="@+id/textInputNum"
+                        style="@style/parent3"
+                        android:layout_marginStart="-80dp"
                         android:layout_marginTop="@dimen/loginViewsMargin2"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="0dp"
                         android:textColorHint="@color/azul_medio"
                         app:hintTextColor="@color/azul_medio">
 
                         <EditText
-                            android:id="@+id/editTextDescripcion"
+                            android:id="@+id/editTextNum"
                             style="@style/modifiedEditText2"
-                            android:hint="@string/descripci_n"
+                            android:hint="@string/n"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textViewTipo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/tipo_clase_evento"
-                        android:textColor="@color/azul_medio"
-                        android:textSize="15sp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLocalidad"
+                    style="@style/parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="@dimen/loginViewsMargin2"
+                    android:textColorHint="@color/azul_medio"
+                    app:hintTextColor="@color/azul_medio">
 
-                    <Spinner
-                        android:id="@+id/spinner_tipo"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp" />
+                    <EditText
+                        android:id="@+id/editTextLocalidad"
+                        style="@style/modifiedEditText2"
+                        android:hint="@string/localidad"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-                        android:id="@+id/btn_crear"
-                        style="@style/newEventButton"
-                        android:layout_marginBottom="20dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/loginViewsMargin2"
-                        android:text="@string/crear"
-                        app:initialCornerAngle="27dp"
-                        app:spinning_bar_color="#FFF" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputDescripcion"
+                    style="@style/parent2"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="@dimen/loginViewsMargin2"
+                    android:layout_marginEnd="20dp"
+                    android:textColorHint="@color/azul_medio"
+                    app:hintTextColor="@color/azul_medio">
+
+                    <EditText
+                        android:id="@+id/editTextDescripcion"
+                        style="@style/modifiedEditText2"
+                        android:hint="@string/descripci_n"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textViewTipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tipo_clase_evento"
+                    android:textColor="@color/azul_medio"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_tipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp" />
+
+                <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                    android:id="@+id/btn_crear"
+                    style="@style/newEventButton"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/loginViewsMargin2"
+                    android:text="@string/crear"
+                    app:initialCornerAngle="27dp"
+                    app:spinning_bar_color="#FFF" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
