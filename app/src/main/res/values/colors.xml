@@ -3,6 +3,7 @@
     <color name="darck_blue">#033861</color>
     <color name="azul_medio">#33658C</color>
     <color name="azul_clarito">#FF03DAC5</color>
+    <color name="azul_extra_clarito">#51AAC2FF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#CFCECE</color>

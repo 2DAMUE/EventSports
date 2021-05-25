@@ -82,7 +82,7 @@ public class ActivityMain extends AppCompatActivity {
         MiAdaptadorMain listAdapter = new MiAdaptadorMain(elements);
         RecyclerView recyclerView = findViewById(R.id.mi_RecyclerMain);
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityMain.this,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
     }
