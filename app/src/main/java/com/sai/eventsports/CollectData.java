@@ -28,7 +28,7 @@ public class CollectData {
         subirEvento.child(userId + "-" + nom).setValue(e);
     }
 
-    public static void recogerUsers (Comunicación comunicacion){
+    public static void recogerUsers (Comunicacion comunicacion){
         List<User> users = new ArrayList<>();
         FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
         DatabaseReference traerUser = myDatabase.getReference("Users");
@@ -49,7 +49,31 @@ public class CollectData {
         });
     }
 
-    public interface Comunicación{
+    public static void recogerEventos (Comunicacion comunicacion){
+        List<Evento> eventos = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerUser = myDatabase.getReference("Eventos");
+        traerUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> datos = snapshot.getChildren();
+                for (DataSnapshot d: datos) {
+                    Evento e = d.getValue(Evento.class);
+                    eventos.add(e);
+                }
+                comunicacion.mandarEventos(eventos);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+
+
+    public interface Comunicacion{
         void mandarUsuarios(List<User> users);
+        void mandarEventos(List<Evento> eventos);
     }
 }

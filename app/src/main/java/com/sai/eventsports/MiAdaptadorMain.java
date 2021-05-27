@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,8 @@ public class MiAdaptadorMain extends RecyclerView.Adapter<MiAdaptadorMain.ViewHo
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(),SpecifyCategory.class);
-                intent.putExtra(i.getNombre(),"NombreEvento");
+                intent.putExtra("NombreEvento",i.getNombre());
+                Log.d("bien",i.getNombre());
                 v.getContext().startActivity(intent);
             }
         });
