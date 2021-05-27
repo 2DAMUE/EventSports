@@ -91,7 +91,11 @@ public class ActivitySignUp extends AppCompatActivity {
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     String userId = firebaseUser.getUid();
                     ActivityLogIn.USERUID = userId;
+                    String userName = Objects.requireNonNull(username.getEditText()).getText().toString().trim();
+                    String correo = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
                     Intent intent = new Intent(getApplicationContext(), ActivityRegisterAlert.class);
+                    intent.putExtra("userName",userName);
+                    intent.putExtra("userGoogle",correo);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

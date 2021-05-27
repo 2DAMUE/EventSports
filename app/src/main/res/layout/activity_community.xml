@@ -21,6 +21,15 @@
             app:titleTextColor="@color/colorAccent"
             tools:ignore="MissingConstraints" />
 
+        <SearchView
+            android:id="@+id/svSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:queryHint="Buscar perfil"
+            app:iconifiedByDefault="false"
+            app:queryHint="Buscar perfil" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recicler_community"
             android:layout_width="match_parent"

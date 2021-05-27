@@ -33,6 +33,7 @@
     <string name="n">Nº</string>
     <string name="tipo_clase_evento">Tipo(Clase/Evento)</string>
     <string name="crear">Crear</string>
+    <string name="localidad">Localidad</string>
     <!-- REGISTER ALERT -->
     <string name="login_Phone_Number_hint">Teléfono</string>
     <string name="login_Phone_Number_txt">Teléfono:</string>

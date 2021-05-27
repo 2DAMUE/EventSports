@@ -20,6 +20,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseUser;
+import com.sai.eventsports.splash_login_register.ActivityLogIn;
+
+import java.util.Objects;
 
 public class ActivityRegisterAlert extends AppCompatActivity {
 
@@ -27,6 +32,8 @@ public class ActivityRegisterAlert extends AppCompatActivity {
     private static final int REQUEST_IMAGE_GALLERY = 101;
     private Uri imageUri;
     private ImageView galleryImage;
+    private Button btnRegister;
+    private TextInputLayout tlf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,8 @@ public class ActivityRegisterAlert extends AppCompatActivity {
         setContentView(R.layout.activity_register_alert);
 
         galleryImage = (ImageView) findViewById(R.id.perfilAlert_iv);
+        btnRegister = findViewById(R.id.btn_register_alert);
+        tlf = findViewById(R.id.textInputPhoneNumberLogin);
 
         Glide.with(this)
                 .load("android.resource://" + getPackageName() + "/" + R.drawable.user_profile)
@@ -54,6 +63,24 @@ public class ActivityRegisterAlert extends AppCompatActivity {
                     }
                 }
 
+            }
+        });
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("userGoogle");
+        String userName = intent.getStringExtra("userName");
+        if (userName == null){
+            userName = Util.chageName(email);
+        }
+        String finalUserName = userName;
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                User u = new User(ActivityLogIn.USERUID, finalUserName,email, Objects.requireNonNull(tlf.getEditText()).getText().toString().trim());
+                CollectData.saveUser(u);
+                Intent accessIntent = new Intent(getApplicationContext(), ActivityMain.class);
+                accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(accessIntent);
             }
         });
     }

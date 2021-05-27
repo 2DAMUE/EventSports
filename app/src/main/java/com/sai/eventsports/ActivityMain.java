@@ -26,8 +26,6 @@ public class ActivityMain extends AppCompatActivity {
 
     private List<ImagenDeporte> elements;
     protected ImageView imagenDeporte;
-    private FirebaseAuth firebaseAuth;
-    private GoogleSignInClient mGoogleSignInClient;
     private BottomNavigationView bnv;
 
     @Override
@@ -84,33 +82,8 @@ public class ActivityMain extends AppCompatActivity {
         MiAdaptadorMain listAdapter = new MiAdaptadorMain(elements);
         RecyclerView recyclerView = findViewById(R.id.mi_RecyclerMain);
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityMain.this,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
     }
 }
-//firebaseAuth = ActivityLogIn.recogerInstancia();
-// Configure Google Sign In
-        /*GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);*/
-
-
-/*Button btn = findViewById(R.id.signout);
-btn.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        mGoogleSignInClient.signOut();
-        firebaseAuth.signOut();
-        ActivityLogIn.USERUID = null;
-        Intent intent = new Intent(getApplicationContext(), ActivityLogIn.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
-});
- */

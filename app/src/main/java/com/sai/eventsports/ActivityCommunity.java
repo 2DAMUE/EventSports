@@ -2,22 +2,33 @@ package com.sai.eventsports;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ActivityCommunity extends AppCompatActivity {
+import java.util.List;
+
+public class ActivityCommunity extends AppCompatActivity implements CollectData.Comunicación, SearchView.OnQueryTextListener {
 
     private BottomNavigationView bnv;
+    private RecyclerView recyclerView;
+    private CollectData.Comunicación comunicacion = this;
+    private SearchView svSearch;
+    private MiAdaptadorCommunity listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
+        svSearch = findViewById(R.id.svSearch);
+        recyclerView = findViewById(R.id.recicler_community);
         bnv = findViewById(R.id.nav_community);
         bnv.setSelectedItemId(R.id.navigation_community);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,5 +57,30 @@ public class ActivityCommunity extends AppCompatActivity {
                 return false;
             }
         });
+        initListener();
+        CollectData.recogerUsers(comunicacion);
+    }
+
+    @Override
+    public void mandarUsuarios(List<User> users) {
+        listAdapter = new MiAdaptadorCommunity(users);
+        //recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(listAdapter);
+    }
+    private void initListener(){
+        svSearch.setOnQueryTextListener(this);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        listAdapter.filter(newText);
+        return false;
     }
 }
