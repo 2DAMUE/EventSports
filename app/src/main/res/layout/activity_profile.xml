@@ -3,49 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     tools:context=".ActivityProfile">
 
     <LinearLayout
+        android:id="@+id/linearLayoutBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="?attr/actionBarSize">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:ignore="MissingConstraints">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_profile"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/menu_profile_fragment"
+        app:title="@string/profile"
+        app:titleTextColor="@color/colorAccent"/>
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutProfile"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:menu="@menu/menu_profile_fragment"
-            app:title="@string/profile"
-            app:titleTextColor="@color/colorAccent"/>
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
+
+            <!--<com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar_id"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@color/white">
+            android:background="@color/white">-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewUserNameProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_toEndOf="@+id/imageViewProfilePhoto"
-                    android:text="Usuario"
-                    android:textColor="@color/azul_medio"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
+            <!--<LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textViewUserNameProfile"
@@ -70,9 +70,9 @@
                             android:layout_marginStart="5dp"
                             android:text="Email"
                             android:textSize="17sp" />
-                    </LinearLayout>
+                    </LinearLayout>-->
 
-                    <LinearLayout
+            <!--  <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -89,30 +89,138 @@
                             android:layout_marginStart="5dp"
                             android:text="Phone"
                             android:textSize="17sp" />
-                    </LinearLayout>
-                </LinearLayout>
+                    </LinearLayout>-->
+            <!--</LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/imageViewProfilePhoto"
                     android:layout_width="105dp"
                     android:layout_height="105dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                     />
+                    android:layout_marginBottom="30dp" />
+
+                <TextView
+                    android:id="@+id/textViewUserNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Usuario"
+                    android:textColor="@color/azul_medio"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+                <!--</com.google.android.material.appbar.AppBarLayout>-->
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewNumPublicaciones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="40dp"
+                    android:text="10"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewNombrePublicaciones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="80dp"
+                    android:text="Publications"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewNumSeguidores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="190dp"
+                    android:layout_marginTop="40dp"
+                    android:text="180"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewSeguidores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="170dp"
+                    android:layout_marginTop="80dp"
+                    android:text="Followers"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewNumSeguidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="300dp"
+                    android:layout_marginTop="40dp"
+                    android:text="180"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewSeguidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="280dp"
+                    android:layout_marginTop="80dp"
+                    android:text="Following"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
 
             </RelativeLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-        <Button
-            android:id="@+id/signout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="24dp"
-            android:text="Sign out"
-            app:layout_constraintBottom_toTopOf="@+id/txtOtros"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewRegistersRv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:text="Registers"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mi_RecyclerRegisters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewPublicationsRv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:text="Publications"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mi_RecyclerPublications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="90dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_profile"
         android:layout_width="0dp"
@@ -125,3 +233,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!-- app:layout_constraintBottom_toTopOf="@+id/nav_profile"
+
+<Button
+            android:id="@+id/signout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="24dp"
+            android:text="Sign out"
+            app:layout_constraintBottom_toTopOf="@+id/txtOtros"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />-->

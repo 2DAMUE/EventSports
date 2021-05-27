@@ -2,6 +2,7 @@ package com.sai.eventsports;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -49,6 +50,14 @@ public class MiAdaptadorMain extends RecyclerView.Adapter<MiAdaptadorMain.ViewHo
                 //.circleCrop()
                 .into(holder.imgDeporte);
         holder.nombreDeporte.setText(i.getNombre());
+        holder.cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(),SpecifyCategory.class);
+                intent.putExtra(i.getNombre(),"NombreEvento");
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     public void setItems(List<ImagenDeporte> items){
