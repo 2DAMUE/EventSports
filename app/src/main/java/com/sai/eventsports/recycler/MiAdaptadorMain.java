@@ -1,22 +1,21 @@
-package com.sai.eventsports;
+package com.sai.eventsports.recycler;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.sai.eventsports.entidades.ImagenDeporte;
+import com.sai.eventsports.R;
+import com.sai.eventsports.SpecifyCategory;
 
 import java.util.List;
 
@@ -53,7 +52,7 @@ public class MiAdaptadorMain extends RecyclerView.Adapter<MiAdaptadorMain.ViewHo
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(),SpecifyCategory.class);
+                Intent intent = new Intent(view.getContext(), SpecifyCategory.class);
                 intent.putExtra(i.getNombre(),"NombreEvento");
                 v.getContext().startActivity(intent);
             }

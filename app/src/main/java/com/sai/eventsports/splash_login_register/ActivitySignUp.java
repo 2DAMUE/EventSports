@@ -1,7 +1,6 @@
 package com.sai.eventsports.splash_login_register;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,10 +17,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.sai.eventsports.ActivityMain;
-import com.sai.eventsports.ActivityRegisterAlert;
 import com.sai.eventsports.R;
-import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.Objects;
 

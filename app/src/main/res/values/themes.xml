@@ -55,7 +55,7 @@
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="newEventButton" parent="viewParent">
+    <style name="Button" parent="viewParent">
         <item name="android:background">@drawable/button_background2</item>
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>

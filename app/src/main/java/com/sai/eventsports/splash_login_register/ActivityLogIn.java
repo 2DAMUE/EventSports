@@ -29,8 +29,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.sai.eventsports.ActivityMain;
-import com.sai.eventsports.ActivityRegisterAlert;
+import com.sai.eventsports.principales.ActivityMain;
 import com.sai.eventsports.R;
 
 import java.util.Objects;

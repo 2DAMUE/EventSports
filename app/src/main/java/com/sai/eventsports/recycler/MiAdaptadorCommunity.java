@@ -1,13 +1,10 @@
-package com.sai.eventsports;
+package com.sai.eventsports.recycler;
 
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.sai.eventsports.R;
+import com.sai.eventsports.entidades.User;
 
 import java.util.ArrayList;
 import java.util.List;

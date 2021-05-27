@@ -1,14 +1,11 @@
-package com.sai.eventsports;
+package com.sai.eventsports.principales;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,10 +15,12 @@ import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputLayout;
+import com.sai.eventsports.CollectData;
+import com.sai.eventsports.entidades.Evento;
+import com.sai.eventsports.R;
+import com.sai.eventsports.Util;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class ActivityNewEvent extends AppCompatActivity {

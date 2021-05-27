@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ActivityNewEvent">
+    tools:context=".principales.ActivityNewEvent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -186,7 +186,7 @@
 
                 <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                     android:id="@+id/btn_crear"
-                    style="@style/newEventButton"
+                    style="@style/Button"
                     android:layout_marginBottom="20dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/loginViewsMargin2"
