@@ -25,8 +25,9 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
+        android:id="@+id/fondo"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="590dp"
         android:scaleType="centerCrop"
         android:src="@drawable/futbol"
         app:layout_constraintEnd_toEndOf="parent"

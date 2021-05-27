@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,13 +20,14 @@ public class SpecifyCategory extends AppCompatActivity{
     LinearLayout linearLayout;
     Button action;
     BottomSheetBehavior bottomSheetBehavoir;
+    ImageView fondo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specify_category);
-
+        fondo=findViewById(R.id.fondo);
         btnBottomSheet = findViewById(R.id.clases);
         action = findViewById(R.id.action);
         linearLayout= findViewById(R.id.bottomSheet);
@@ -41,9 +43,11 @@ public class SpecifyCategory extends AppCompatActivity{
                 switch(newState){
                         case BottomSheetBehavior.STATE_EXPANDED:
                             Toast.makeText(SpecifyCategory.this, "Abierto",Toast.LENGTH_LONG).show();
+                            fondo.setImageAlpha(70);
                             bottomSheetBehavoir.setDraggable(true);
                             break;
                             case BottomSheetBehavior.STATE_COLLAPSED:
+                                fondo.setImageAlpha(500);
                                 bottomSheetBehavoir.setDraggable(false);
                                 Toast.makeText(SpecifyCategory.this, "Cerrado",Toast.LENGTH_LONG).show();
                                 break;
