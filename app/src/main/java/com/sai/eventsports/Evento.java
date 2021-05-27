@@ -5,19 +5,21 @@ public class Evento {
     private String nombre;
     private double latitud;
     private double longitud;
-    private String descripción;
+    private String direccion;
+    private String descripcion;
     private String tipo;
 
     public Evento() {
         super();
     }
 
-    public Evento(String userid, String nombre, double latitud, double longitud, String descripción, String tipo) {
+    public Evento(String userid, String nombre, double latitud, double longitud, String direccion, String descripcion, String tipo) {
         this.userid = userid;
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.descripción = descripción;
+        this.direccion = direccion;
+        this.descripcion = descripcion;
         this.tipo = tipo;
     }
 
@@ -53,12 +55,20 @@ public class Evento {
         this.longitud = longitud;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getTipo() {

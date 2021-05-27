@@ -94,7 +94,8 @@ public class ActivityNewEvent extends AppCompatActivity {
                 double[] coordenadas = Util.takeCoordenadas(context,Objects.requireNonNull(direccion.getEditText()).getText().toString().trim(), Objects.requireNonNull(num.getEditText()).getText().toString().trim(), Objects.requireNonNull(localidad.getEditText()).getText().toString().trim());
                 double latitud = coordenadas[0];
                 double longitud = coordenadas[1];
-                Evento e = new Evento(ActivityLogIn.USERUID, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim(),latitud,longitud, Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim(),tipoEvent[posicion]);
+                String direc = Objects.requireNonNull(direccion.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(num.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(localidad.getEditText()).getText().toString().trim();
+                Evento e = new Evento(ActivityLogIn.USERUID, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim(),latitud,longitud, direc, Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim(),tipoEvent[posicion]);
                 CollectData.saveEvento(e);
             }
         });
