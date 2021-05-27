@@ -3,41 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTintMode="add"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheet"
     android:orientation="vertical"
     android:padding="10dp"
     app:layout_behavior="@string/bottom_sheet_behavior"
-    app:behavior_hideable="true"
-    app:behavior_peekHeight="56dp">
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="200dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:backgroundTint="@color/white"
+
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:layout_height="200dp"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal"
         android:weightSum="4">
 
         <Button
-            android:layout_width="wrap_content"
+            style="@style/modifiedEditText"
+            android:id="@+id/eventos"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:text="Eventos"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="25sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            app:backgroundTint="#00FFFFFF" />
 
         <Button
-            android:layout_width="wrap_content"
+            style="@style/modifiedEditText"
+            android:id="@+id/clases"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
             android:text="Clases"
             android:textColor="#000000"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:backgroundTint="#00FFFFFF" />
 
     </LinearLayout>
 

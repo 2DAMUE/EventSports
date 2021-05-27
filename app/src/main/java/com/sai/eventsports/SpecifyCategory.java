@@ -1,6 +1,7 @@
 package com.sai.eventsports;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,34 +20,33 @@ public class SpecifyCategory extends AppCompatActivity{
     Button action;
     BottomSheetBehavior bottomSheetBehavoir;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specify_category);
 
-        btnBottomSheet = findViewById(R.id.btnBottomSheet);
+        btnBottomSheet = findViewById(R.id.clases);
         action = findViewById(R.id.action);
         linearLayout= findViewById(R.id.bottomSheet);
 
         bottomSheetBehavoir=BottomSheetBehavior.from(linearLayout);
+        bottomSheetBehavoir.setDraggable(true);
+        Log.d("estado",bottomSheetBehavoir.getState()+"");
 
         bottomSheetBehavoir.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                Log.d("estado",bottomSheetBehavoir.getState()+"");
                 switch(newState){
-                    case BottomSheetBehavior.STATE_HIDDEN:
-                        btnBottomSheet.setText("Expand the bottom Sheet");
-                        break;
                         case BottomSheetBehavior.STATE_EXPANDED:
-                            btnBottomSheet.setText("Close the bottom sheet");
+                            Toast.makeText(SpecifyCategory.this, "Abierto",Toast.LENGTH_LONG).show();
+                            bottomSheetBehavoir.setDraggable(true);
                             break;
                             case BottomSheetBehavior.STATE_COLLAPSED:
-                                btnBottomSheet.setText("Expand the bottom sheet");
+                                bottomSheetBehavoir.setDraggable(false);
+                                Toast.makeText(SpecifyCategory.this, "Cerrado",Toast.LENGTH_LONG).show();
                                 break;
-                                case BottomSheetBehavior.STATE_DRAGGING:
-                                    break;
-                                    case BottomSheetBehavior.STATE_SETTLING:
-                                        break;
                 }
 
                 action.setOnClickListener(new View.OnClickListener() {
@@ -68,14 +68,16 @@ public class SpecifyCategory extends AppCompatActivity{
             public void onClick(View v) {
                 if(bottomSheetBehavoir.getState()!=BottomSheetBehavior.STATE_EXPANDED){
                     bottomSheetBehavoir.setState(BottomSheetBehavior.STATE_EXPANDED);
-                    btnBottomSheet.setText("Close the bottom sheet");
+                    Log.d("bien",bottomSheetBehavoir.getPeekHeight()+"");
                 }else{
-                    bottomSheetBehavoir.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                    btnBottomSheet.setText("Expand the bottomSheet");
+                    bottomSheetBehavoir.setState(4);
+                    Log.d("estado",bottomSheetBehavoir.getState()+"");
+                    Log.d("bien",bottomSheetBehavoir.getPeekHeight()+"");
                 }
 
             }
         });
+
     }
 
 }

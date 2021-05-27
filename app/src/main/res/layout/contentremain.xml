@@ -10,14 +10,15 @@
     tools:showIn="@layout/activity_specify_category">
 
     <Button
+        android:visibility="invisible"
+        android:id="@+id/btnBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnBottomSheet"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:text="Persistent Bottom Sheet"
         android:textColor="@color/black"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
 
 </LinearLayout>

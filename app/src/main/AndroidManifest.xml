@@ -67,7 +67,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SpecifyCategory"/>
+            android:name=".SpecifyCategory"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ActivityMain"
             android:theme="@style/AppTheme.NoActionBar" />
