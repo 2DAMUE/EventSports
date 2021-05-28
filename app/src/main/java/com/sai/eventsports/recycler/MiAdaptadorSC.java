@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,7 @@ public class MiAdaptadorSC extends RecyclerView.Adapter<MiAdaptadorSC.ViewHolder
     @NonNull
     @Override
     public MiAdaptadorSC.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_eventos_clases, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_imagenes_main, parent, false);
         return new MiAdaptadorSC.ViewHolder(view);
     }
 
@@ -68,13 +69,13 @@ public class MiAdaptadorSC extends RecyclerView.Adapter<MiAdaptadorSC.ViewHolder
     public static class  ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgDeporte;
         TextView nombreEvento;
-        MaterialCardView cardview;
+        LinearLayout cardview;
 
         ViewHolder(View itemView){
             super(itemView);
-            this.imgDeporte = itemView.findViewById(R.id.imageviewCV);
-            this.nombreEvento = itemView.findViewById(R.id.tituloCV);
-            this.cardview = itemView.findViewById(R.id.cardiew);
+            this.imgDeporte = itemView.findViewById(R.id.imageViewDeporte);
+            this.nombreEvento = itemView.findViewById(R.id.textoDeporte);
+            this.cardview = itemView.findViewById(R.id.cardview);
         }
     }
 }

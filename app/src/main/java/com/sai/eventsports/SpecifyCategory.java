@@ -1,6 +1,8 @@
 package com.sai.eventsports;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -88,7 +91,7 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
                                 bottomSheetBehavoir.setDraggable(false);
                                 break;
                 }
-
+                CollectData.recogerEventos(comunicacion);
             }
 
             @Override
@@ -141,7 +144,7 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
 
             }
         });
-        CollectData.recogerEventos(comunicacion);
+
     }
 
     @Override
@@ -149,9 +152,11 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
 
     @Override
     public void mandarEventos(List<Evento> eventos) {
+        listAdapter=null;
         List<Evento> ents = new ArrayList<>();
         List<Evento> clases = new ArrayList<>();
         for (Evento e:eventos) {
+            Log.d("Evento", e.getTipo());
             if(e.getTipo().equals("Evento")){
                 ents.add(e);
             }else{
@@ -161,12 +166,16 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         }
         //If depende del boton clicado
             //eventos
+        if(event=true) {
             listAdapter = new MiAdaptadorSC(ents);
-        //else
+        }else{
             listAdapter = new MiAdaptadorSC(clases);
+        }
+        Log.d("ada",listAdapter.toString());
+
         //recyclerView.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(listAdapter);
     }
 }
