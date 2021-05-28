@@ -19,6 +19,7 @@ import com.sai.eventsports.CollectData;
 import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.R;
 import com.sai.eventsports.Util;
+import com.sai.eventsports.entidades.ImagenDeporte;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.Objects;
@@ -27,10 +28,11 @@ public class ActivityNewEvent extends AppCompatActivity {
 
     private Spinner miSpn;
     private BottomNavigationView bnv;
-    private int posicion;
+    private int posicion,posicionDeporte;
     private Button btnCrear;
     private TextInputLayout titulo;
     private TextInputLayout descripcion;
+    private Spinner spinnerDeporte;
     private TextInputLayout direccion,num,localidad;
     private Context context = this;
 
@@ -43,6 +45,7 @@ public class ActivityNewEvent extends AppCompatActivity {
         btnCrear = findViewById(R.id.btn_crear);
         titulo = findViewById(R.id.textInputTitulo);
         descripcion = findViewById(R.id.textInputDescripcion);
+        spinnerDeporte = findViewById(R.id.spinner_Deporte);
         direccion = findViewById(R.id.textInputDireccion);
         num = findViewById(R.id.textInputNum);
         localidad = findViewById(R.id.textInputLocalidad);
@@ -87,6 +90,18 @@ public class ActivityNewEvent extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
+        String[] tipoDeporte = {"Futbol", "Baloncesto", "Tenis", "Voleibol", "Natación", "Badminton", "Atletismo", "Balonmano", "Waterpolo", "Padel", "Ajedrez"};
+        ArrayAdapter<String> adaptado = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,tipoDeporte);
+        spinnerDeporte.setAdapter(adaptador);
+
+        spinnerDeporte.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                posicionDeporte = position;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +109,7 @@ public class ActivityNewEvent extends AppCompatActivity {
                 double latitud = coordenadas[0];
                 double longitud = coordenadas[1];
                 String direc = Objects.requireNonNull(direccion.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(num.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(localidad.getEditText()).getText().toString().trim();
-                Evento e = new Evento(ActivityLogIn.USERUID, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim(),latitud,longitud, direc, Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim(),tipoEvent[posicion]);
+                Evento e = new Evento(ActivityLogIn.USERUID, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim(),latitud,longitud, direc, Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim(),tipoEvent[posicion], tipoDeporte[posicionDeporte]);
                 CollectData.saveEvento(e);
             }
         });
