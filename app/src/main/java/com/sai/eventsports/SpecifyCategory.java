@@ -1,5 +1,7 @@
 package com.sai.eventsports;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
@@ -8,18 +10,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-public class SpecifyCategory extends AppCompatActivity{
+import java.util.ArrayList;
+import java.util.List;
+
+public class SpecifyCategory extends AppCompatActivity implements CollectData.Comunicacion {
     Button clases;
     Button eventos;
     boolean clas = false;
+    private CollectData.Comunicacion comunicacion = this;
+    private RecyclerView recyclerView;
+    private MiAdaptadorSC listAdapter;
+    Toolbar nombre;
     boolean event = false;
     private static final String TAG=SpecifyCategory.class.getSimpleName();
     LinearLayout linearLayout;
@@ -27,10 +41,17 @@ public class SpecifyCategory extends AppCompatActivity{
     ImageView fondo;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specify_category);
+        Intent intent = getIntent();
+        String titulo = intent.getStringExtra("NombreEvento");
+        Log.d("Bien",titulo+"");
+        nombre=findViewById(R.id.toolbar_profile);
+        nombre.setTitle(titulo);
+        recyclerView=findViewById(R.id.recyclerEvents);
         fondo=findViewById(R.id.fondo);
         clases = findViewById(R.id.clases);
         eventos = findViewById(R.id.eventos);
@@ -120,7 +141,32 @@ public class SpecifyCategory extends AppCompatActivity{
 
             }
         });
-
+        CollectData.recogerEventos(comunicacion);
     }
 
+    @Override
+    public void mandarUsuarios(List<User> users){}
+
+    @Override
+    public void mandarEventos(List<Evento> eventos) {
+        List<Evento> ents = new ArrayList<>();
+        List<Evento> clases = new ArrayList<>();
+        for (Evento e:eventos) {
+            if(e.getTipo().equals("Evento")){
+                ents.add(e);
+            }else{
+                clases.add(e);
+            }
+
+        }
+        //If depende del boton clicado
+            //eventos
+            listAdapter = new MiAdaptadorSC(ents);
+        //else
+            listAdapter = new MiAdaptadorSC(clases);
+        //recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(listAdapter);
+    }
 }

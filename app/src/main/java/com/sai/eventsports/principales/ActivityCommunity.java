@@ -18,11 +18,11 @@ import com.sai.eventsports.entidades.User;
 
 import java.util.List;
 
-public class ActivityCommunity extends AppCompatActivity implements CollectData.Comunicación, SearchView.OnQueryTextListener {
+public class ActivityCommunity extends AppCompatActivity implements CollectData.Comunicacion, SearchView.OnQueryTextListener {
 
     private BottomNavigationView bnv;
     private RecyclerView recyclerView;
-    private CollectData.Comunicación comunicacion = this;
+    private CollectData.Comunicacion comunicacion = this;
     private SearchView svSearch;
     private MiAdaptadorCommunity listAdapter;
 
@@ -73,6 +73,10 @@ public class ActivityCommunity extends AppCompatActivity implements CollectData.
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(listAdapter);
     }
+
+    @Override
+    public void mandarEventos(List<Evento> eventos) {}
+
     private void initListener(){
         svSearch.setOnQueryTextListener(this);
     }

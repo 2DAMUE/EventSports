@@ -25,6 +25,19 @@ public class Evento {
         this.deporte = deporte;
     }
 
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "userid='" + userid + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", latitud=" + latitud +
+                ", longitud=" + longitud +
+                ", direccion='" + direccion + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
+
     public String getUserid() {
         return userid;
     }
