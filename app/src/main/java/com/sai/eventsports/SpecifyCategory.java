@@ -2,6 +2,7 @@ package com.sai.eventsports;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -68,6 +69,7 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         bottomSheetBehavoir=BottomSheetBehavior.from(linearLayout);
         bottomSheetBehavoir.setDraggable(true);
         Log.d("estado",bottomSheetBehavoir.getState()+"");
+        recyclerView.setVisibility(View.INVISIBLE);
 
         bottomSheetBehavoir.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
@@ -76,10 +78,12 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
                 switch(newState){
                         case BottomSheetBehavior.STATE_EXPANDED:
                             fondo.setImageAlpha(70);
+                            recyclerView.setVisibility(View.VISIBLE);
                             bottomSheetBehavoir.setDraggable(true);
                             break;
                             case BottomSheetBehavior.STATE_COLLAPSED:
                                 clas=false;
+                                recyclerView.setVisibility(View.INVISIBLE);
                                 clases.setText("Clases");
                                 clases.setTypeface(null, 0);
                                 clases.setAlpha(1f);
