@@ -34,6 +34,7 @@
     <string name="tipo_clase_evento">Tipo(Clase/Evento)</string>
     <string name="crear">Crear</string>
     <string name="localidad">Localidad</string>
+    <string name="deporte_event">Deporte</string>
     <!-- REGISTER ALERT -->
     <string name="login_Phone_Number_hint">Teléfono</string>
     <string name="login_Phone_Number_txt">Teléfono:</string>
@@ -48,4 +49,13 @@
     <string name="comunidad">Comunidad</string>
     <string name="perfil">Perfil</string>
     <string name="title_activity_maps">Map</string>
+    <!-- EVENTS PROFILE -->
+    <string name="deporte">Deporte:</string>
+    <string name="direcci_n2">Dirección:</string>
+    <string name="descripci_n2">Descripción:</string>
+    <string name="coordinador">Coordinador:</string>
+    <string name="metodo_de_pago">Metodo de Pago:</string>
+    <string name="chat">Chat</string>
+    <string name="apuntate">Apuntate</string>
+    <string name="tarjeta">Tarjeta:</string>
 </resources>

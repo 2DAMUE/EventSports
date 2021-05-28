@@ -1,4 +1,4 @@
-package com.sai.eventsports;
+package com.sai.eventsports.principales;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sai.eventsports.CollectData;
+import com.sai.eventsports.recycler.MiAdaptadorCommunity;
+import com.sai.eventsports.R;
+import com.sai.eventsports.entidades.User;
 
 import java.util.List;
 

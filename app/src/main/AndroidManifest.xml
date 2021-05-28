@@ -34,23 +34,22 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ActivityMaps"
+            android:name=".principales.ActivityMaps"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".ActivityNewEvent"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivityCommunity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".ActivityRegisterAlert"
+            android:name=".principales.ActivityNewEvent"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivityProfile"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:name=".principales.ActivityCommunity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".splash_login_register.ActivityForgotPassword" />
+            android:name=".splash_login_register.ActivityRegisterAlert"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".principales.ActivityProfile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".splash_login_register.ActivityForgotPassword" />
         <activity
             android:name=".splash_login_register.ActivitySignUp"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -68,10 +67,11 @@
         </activity>
         <activity
             android:name=".SpecifyCategory"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".ActivityMain"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".principales.ActivityMain"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActivityEvents"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
-
 </manifest>

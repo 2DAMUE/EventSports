@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ActivityNewEvent">
+    tools:context=".principales.ActivityNewEvent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -150,6 +150,24 @@
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:id="@+id/textViewDeporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/deporte"
+                    android:textColor="@color/azul_medio"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_Deporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputDescripcion"
                     style="@style/parent2"
@@ -173,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
                     android:text="@string/tipo_clase_evento"
                     android:textColor="@color/azul_medio"
                     android:textSize="15sp" />
@@ -186,7 +205,7 @@
 
                 <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                     android:id="@+id/btn_crear"
-                    style="@style/newEventButton"
+                    style="@style/Button"
                     android:layout_marginBottom="20dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/loginViewsMargin2"

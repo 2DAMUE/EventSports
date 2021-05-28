@@ -1,4 +1,4 @@
-package com.sai.eventsports;
+package com.sai.eventsports.entidades;
 
 public class Evento {
     private String userid;
@@ -8,12 +8,13 @@ public class Evento {
     private String direccion;
     private String descripcion;
     private String tipo;
+    private String deporte;
 
     public Evento() {
         super();
     }
 
-    public Evento(String userid, String nombre, double latitud, double longitud, String direccion, String descripcion, String tipo) {
+    public Evento(String userid, String nombre, double latitud, double longitud, String direccion, String descripcion, String tipo, String deporte) {
         this.userid = userid;
         this.nombre = nombre;
         this.latitud = latitud;
@@ -21,6 +22,7 @@ public class Evento {
         this.direccion = direccion;
         this.descripcion = descripcion;
         this.tipo = tipo;
+        this.deporte = deporte;
     }
 
     public String getUserid() {
@@ -77,5 +79,13 @@ public class Evento {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getDeporte() {
+        return deporte;
+    }
+
+    public void setDeporte(String deporte) {
+        this.deporte = deporte;
     }
 }

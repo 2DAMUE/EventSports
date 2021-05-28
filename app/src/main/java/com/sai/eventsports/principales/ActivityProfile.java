@@ -1,4 +1,4 @@
-package com.sai.eventsports;
+package com.sai.eventsports.principales;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,14 +14,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,7 +26,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.sai.eventsports.splash_login_register.ActivityLogIn;
+import com.sai.eventsports.entidades.ImagenDeporte;
+import com.sai.eventsports.recycler.MiAdaptadorMain;
+import com.sai.eventsports.R;
 
 import java.util.ArrayList;
 import java.util.List;

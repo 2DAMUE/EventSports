@@ -1,7 +1,6 @@
-package com.sai.eventsports;
+package com.sai.eventsports.splash_login_register;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -21,8 +20,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseUser;
-import com.sai.eventsports.splash_login_register.ActivityLogIn;
+import com.sai.eventsports.CollectData;
+import com.sai.eventsports.R;
+import com.sai.eventsports.entidades.User;
+import com.sai.eventsports.Util;
+import com.sai.eventsports.principales.ActivityMain;
 
 import java.util.Objects;
 

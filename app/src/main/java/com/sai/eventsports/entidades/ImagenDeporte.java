@@ -1,4 +1,4 @@
-package com.sai.eventsports;
+package com.sai.eventsports.entidades;
 
 public class ImagenDeporte {
 
