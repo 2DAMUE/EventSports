@@ -1,14 +1,23 @@
 package com.sai.eventsports;
 
+import android.net.Uri;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.entidades.User;
+import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +37,24 @@ public class CollectData {
         String userId = e.getUserid();
         String nom = e.getNombre();
         subirEvento.child(userId + "-" + nom).setValue(e);
+    }
+
+    public static void saveImg(Uri imageUri) {
+        StorageReference profileImageReference = FirebaseStorage.getInstance().getReference("FotosPerfil/" + ActivityLogIn.USERUID + ".jpg");
+
+        if (imageUri != null) {
+            profileImageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    String profileImageUrl = taskSnapshot.getUploadSessionUri().toString();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("PUTAIMG", e.getLocalizedMessage());
+                }
+            });
+        }
     }
 
     public static void recogerUsers (Comunicacion comunicacion){

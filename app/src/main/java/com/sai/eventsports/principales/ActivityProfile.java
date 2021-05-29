@@ -14,21 +14,27 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.sai.eventsports.CollectData;
 import com.sai.eventsports.entidades.ImagenDeporte;
 import com.sai.eventsports.recycler.MiAdaptadorMain;
 import com.sai.eventsports.R;
+import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +84,7 @@ public class ActivityProfile extends AppCompatActivity {
                 return false;
             }
         });
-        /*firebaseAuth = ActivityLogIn.recogerInstancia();
+        firebaseAuth = ActivityLogIn.recogerInstancia();
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -87,21 +93,20 @@ public class ActivityProfile extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        Button btn = findViewById(R.id.signout);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGoogleSignInClient.signOut();
+                firebaseAuth.signOut();
+                ActivityLogIn.USERUID = null;
+                Intent intent = new Intent(getApplicationContext(), ActivityLogIn.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
-
-    Button btn = findViewById(R.id.signout);
-    btn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            mGoogleSignInClient.signOut();
-            firebaseAuth.signOut();
-            ActivityLogIn.USERUID = null;
-            Intent intent = new Intent(getApplicationContext(), ActivityLogIn.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        }
-    });*/
         galleryImage = (ImageView) findViewById(R.id.imageViewProfilePhoto);
 
         Glide.with(this)
@@ -125,7 +130,13 @@ public class ActivityProfile extends AppCompatActivity {
 
             }
         });
-
+        Glide.with(getApplicationContext())
+                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + ActivityLogIn.USERUID + ".jpg?alt=media&token=7437589e-16cb-4f09-8c58-3b4f1e6187be"))
+                .placeholder(R.drawable.ic_profile)
+                .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade(300))
+                .circleCrop()
+                .into(galleryImage);
         init();
     }
 
@@ -164,7 +175,12 @@ public class ActivityProfile extends AppCompatActivity {
     /*@Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.settings_button) {
-            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            mGoogleSignInClient.signOut();
+            firebaseAuth.signOut();
+            ActivityLogIn.USERUID = null;
+            Intent intent = new Intent(getApplicationContext(), ActivityLogIn.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             return true;
         }
@@ -189,6 +205,7 @@ public class ActivityProfile extends AppCompatActivity {
                     .transition(DrawableTransitionOptions.withCrossFade(300))
                     .circleCrop()
                     .into(galleryImage);
+            //CollectData.saveImg(imageUri);
         } else {
             Log.i("RAG", "Result: " + resultCode);
             Toast.makeText(this, "You did not choose any photo", Toast.LENGTH_SHORT).show();

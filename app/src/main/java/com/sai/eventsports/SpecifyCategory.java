@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.sai.eventsports.entidades.Evento;
+import com.sai.eventsports.entidades.User;
 import com.sai.eventsports.recycler.MiAdaptadorSC;
 
 import java.util.ArrayList;
