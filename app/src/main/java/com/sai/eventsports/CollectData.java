@@ -57,6 +57,24 @@ public class CollectData {
         }
     }
 
+    public static void saveImgEvent(Uri imageUri, String nombre) {
+        StorageReference profileImageReference = FirebaseStorage.getInstance().getReference("FotosEvent/" + ActivityLogIn.USERUID + "-" + nombre + ".jpg");
+
+        if (imageUri != null) {
+            profileImageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    String eventImageUrl = taskSnapshot.getUploadSessionUri().toString();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("PUTAIMG", e.getLocalizedMessage());
+                }
+            });
+        }
+    }
+
     public static void recogerUsers (Comunicacion comunicacion){
         List<User> users = new ArrayList<>();
         FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
@@ -98,8 +116,6 @@ public class CollectData {
             }
         });
     }
-
-
 
     public interface Comunicacion{
         void mandarUsuarios(List<User> users);
