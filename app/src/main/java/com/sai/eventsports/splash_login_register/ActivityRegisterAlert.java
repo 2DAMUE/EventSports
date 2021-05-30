@@ -79,6 +79,7 @@ public class ActivityRegisterAlert extends AppCompatActivity {
             public void onClick(View v) {
                 User u = new User(ActivityLogIn.USERUID, finalUserName,email, Objects.requireNonNull(tlf.getEditText()).getText().toString().trim());
                 CollectData.saveUser(u);
+                CollectData.saveImg(imageUri);
                 Intent accessIntent = new Intent(getApplicationContext(), ActivityMain.class);
                 accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

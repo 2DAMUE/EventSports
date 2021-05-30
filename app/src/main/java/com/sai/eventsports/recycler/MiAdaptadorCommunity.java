@@ -1,5 +1,6 @@
 package com.sai.eventsports.recycler;
 
+import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.sai.eventsports.R;
 import com.sai.eventsports.entidades.User;
+import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +48,7 @@ public class MiAdaptadorCommunity extends RecyclerView.Adapter<MiAdaptadorCommun
     public void onBindViewHolder(final MiAdaptadorCommunity.ViewHolder holder, final int position){
         User u = mData.get(position);
         Glide.with(view)
-                //.load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/profilepics%2F" + u.getUserId()+ ".jpg?alt=media&token=dcb65d07-cace-45b4-8fb7-e38880be36ce"))
-                .load(R.drawable.ic_profile)
+                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + u.getUserID() + ".jpg?alt=media&token=7437589e-16cb-4f09-8c58-3b4f1e6187be"))
                 .placeholder(R.drawable.ic_profile)
                 .centerCrop()
                 .transition(DrawableTransitionOptions.withCrossFade(300))

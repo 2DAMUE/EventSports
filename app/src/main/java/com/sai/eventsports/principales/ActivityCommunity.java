@@ -12,6 +12,7 @@ import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sai.eventsports.CollectData;
+import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.recycler.MiAdaptadorCommunity;
 import com.sai.eventsports.R;
 import com.sai.eventsports.entidades.User;
