@@ -28,6 +28,14 @@ public class MiAdaptadorSC extends RecyclerView.Adapter<MiAdaptadorSC.ViewHolder
         this.evento = evento;
     }
 
+    @Override
+    public String toString() {
+        return "MiAdaptadorSC{" +
+                "evento=" + evento +
+                ", view=" + view +
+                '}';
+    }
+
     @NonNull
     @Override
     public MiAdaptadorSC.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
