@@ -107,7 +107,7 @@ public class ActivityNewEvent extends AppCompatActivity {
         });
         String[] tipoDeporte = {"Futbol", "Baloncesto", "Tenis", "Voleibol", "Natación", "Badminton", "Atletismo", "Balonmano", "Waterpolo", "Padel", "Ajedrez"};
         ArrayAdapter<String> adaptado = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,tipoDeporte);
-        spinnerDeporte.setAdapter(adaptador);
+        spinnerDeporte.setAdapter(adaptado);
 
         spinnerDeporte.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -125,7 +125,9 @@ public class ActivityNewEvent extends AppCompatActivity {
                 double longitud = coordenadas[1];
                 String direc = Objects.requireNonNull(direccion.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(num.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(localidad.getEditText()).getText().toString().trim();
                 Evento e = new Evento(ActivityLogIn.USERUID, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim(),latitud,longitud, direc, Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim(),tipoEvent[posicion], tipoDeporte[posicionDeporte]);
+                CollectData.saveImgEvent(imageUri, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim());
                 CollectData.saveEvento(e);
+                startActivity(new Intent(getApplicationContext(), ActivityMain.class));
             }
         });
 
@@ -152,13 +154,7 @@ public class ActivityNewEvent extends AppCompatActivity {
 
             }
         });
-        Glide.with(getApplicationContext())
-                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + ActivityLogIn.USERUID + ".jpg?alt=media&token=7437589e-16cb-4f09-8c58-3b4f1e6187be"))
-                .placeholder(R.drawable.ic_profile)
-                .centerCrop()
-                .transition(DrawableTransitionOptions.withCrossFade(300))
-                .circleCrop()
-                .into(galleryImage);
+
     }
 
     @Override
@@ -173,7 +169,6 @@ public class ActivityNewEvent extends AppCompatActivity {
                     .transition(DrawableTransitionOptions.withCrossFade(300))
                     .circleCrop()
                     .into(galleryImage);
-            //CollectData.saveImg(imageUri);
         } else {
             Log.i("RAG", "Result: " + resultCode);
             Toast.makeText(this, "You did not choose any photo", Toast.LENGTH_SHORT).show();
