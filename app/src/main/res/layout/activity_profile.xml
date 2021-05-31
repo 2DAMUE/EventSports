@@ -15,14 +15,6 @@
         android:gravity="center"
         tools:ignore="MissingConstraints">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:menu="@menu/menu_profile_fragment"
-        app:title="@string/profile"
-        app:titleTextColor="@color/colorAccent"/>
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -171,6 +163,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="90dp" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:menu="@menu/menu_profile_fragment"
+                app:title="@string/profile"
+                app:titleTextColor="@color/colorAccent" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
