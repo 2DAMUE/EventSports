@@ -26,15 +26,21 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.sai.eventsports.CollectData;
 import com.sai.eventsports.R;
+import com.sai.eventsports.entidades.Evento;
+import com.sai.eventsports.entidades.User;
 
-public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback {
+import java.util.List;
+
+public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback, CollectData.Comunicacion {
 
     private GoogleMap mMap;
     private BottomNavigationView bnv;
     private LocationManager lm;
     private static final int REQUEST_CODE = 101;
     private FloatingActionButton find_Location;
+    private CollectData.Comunicacion comunicacion = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,7 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
                 obtenerLocalizacion();
             }
         });
+        CollectData.recogerEventos(comunicacion);
     }
 
     private void checkPermissionClient() {
@@ -119,7 +126,7 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
         LocationListener oyente_localizaciones = new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
-                Log.d("Paso"," Por aqui");
+                Log.d("Paso", " Por aqui");
                 findLocation(location);
                 lm.removeUpdates(this);
             }
@@ -140,19 +147,44 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
         if (location != null) {
             double latitud = location.getLatitude();
             double longitud = location.getLongitude();
-            Log.d("Coordenadas",latitud + " " + longitud);
+            Log.d("Coordenadas", latitud + " " + longitud);
             // Add a marker in Sydney and move the camera
             LatLng ubi = new LatLng(latitud, longitud);
-            mMap.addMarker(new MarkerOptions().position(ubi).title("Funcaaa").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            mMap.addMarker(new MarkerOptions().position(ubi).title("Mi Ubicación").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(ubi));
-            //String username = u.getUid();
-            //CollectUserData.updateLocation(latitud, longitud, username);
-            //CollectUserData.takeData(collectUser);
+        }
+    }
+
+    private void drawLocationEvents(double latitud, double longitud, String tipo, String titulo, String userId) {
+        //Aqui se pasan las coordenadas
+        LatLng ubi = new LatLng(latitud, longitud);
+        //Aqui dirigimos la camara a la ubicacion
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(ubi));
+        //Esto es el marcador con el titulo de ubicacion
+        if (tipo.equals("Evento")) {
+            mMap.addMarker(new MarkerOptions().position(ubi)
+                    .title(titulo)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        } else if (tipo.equals("Clase")) {
+            mMap.addMarker(new MarkerOptions().position(ubi)
+                    .title(titulo)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
         }
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+    }
+
+    @Override
+    public void mandarUsuarios(List<User> users) {
+    }
+
+    @Override
+    public void mandarEventos(List<Evento> eventos) {
+        for (Evento e:eventos) {
+            drawLocationEvents(e.getLatitud(),e.getLongitud(),e.getTipo(),e.getNombre(),e.getUserid());
+        }
     }
 }
