@@ -8,7 +8,7 @@
     tools:context=".principales.ActivityMain">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_profile"
+        android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"

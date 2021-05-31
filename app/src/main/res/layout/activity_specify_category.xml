@@ -16,7 +16,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_profile"
+        android:id="@+id/toolbar_specify_category"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
@@ -32,7 +32,7 @@
         android:src="@drawable/futbol"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_profile" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_specify_category" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

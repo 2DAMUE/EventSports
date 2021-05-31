@@ -2,6 +2,7 @@ package com.sai.eventsports.principales;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,9 +49,6 @@ public class ActivityProfile extends AppCompatActivity {
     private ImageView galleryImage;
     private List<ImagenDeporte> elements;
 
-    private FirebaseAuth firebaseAuth;
-    private GoogleSignInClient mGoogleSignInClient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,28 +82,8 @@ public class ActivityProfile extends AppCompatActivity {
                 return false;
             }
         });
-        firebaseAuth = ActivityLogIn.recogerInstancia();
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        Button btn = findViewById(R.id.signout);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mGoogleSignInClient.signOut();
-                firebaseAuth.signOut();
-                ActivityLogIn.USERUID = null;
-                Intent intent = new Intent(getApplicationContext(), ActivityLogIn.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-        });
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_profile);
+        setSupportActionBar(myToolbar);
 
         galleryImage = (ImageView) findViewById(R.id.imageViewProfilePhoto);
 
@@ -167,32 +145,6 @@ public class ActivityProfile extends AppCompatActivity {
         recyclerViewRegisters.setLayoutManager(layoutManager2);
         recyclerViewRegisters.setAdapter(listAdapter2);
     }
-    /**
-     * Sirve para ir a setting en el toolbar
-     * @param //item
-     * @return
-     */
-    /*@Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.settings_button) {
-            mGoogleSignInClient.signOut();
-            firebaseAuth.signOut();
-            ActivityLogIn.USERUID = null;
-            Intent intent = new Intent(getApplicationContext(), ActivityLogIn.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_profile_fragment, menu);
-        return super.onCreateOptionsMenu(menu);
-    }*/
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -229,6 +181,27 @@ public class ActivityProfile extends AppCompatActivity {
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_IMAGE_GALLERY);
+    }
+
+    /**
+     * Sirve para ir a setting en el toolbar
+     * @param //item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.settings_button2) {
+            Intent intent = new Intent(getApplicationContext(), ActivitySettings.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_profile_fragment, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 }
