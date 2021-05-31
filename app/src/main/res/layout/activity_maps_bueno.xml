@@ -23,7 +23,7 @@
         android:layout_marginBottom="?attr/actionBarSize">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_profile"
+            android:id="@+id/toolbar_maps"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"

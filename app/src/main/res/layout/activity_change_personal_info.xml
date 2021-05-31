@@ -18,24 +18,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_change_personal_info"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        app:title="@string/personal_info"
-        app:titleTextColor="@color/colorAccent"
-        tools:ignore="MissingConstraints" >
-
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar_change_personal_info"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
         <ImageView
             android:id="@+id/ic_back"
             android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_marginStart="240dp">
+            android:layout_height="55dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_flechita_foreground">
         </ImageView>
-    </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_change_personal_info2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:title="@string/personal_info"
+            app:titleTextColor="@color/colorAccent"
+            tools:ignore="MissingConstraints" >
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,17 +67,17 @@
             android:paddingBottom="20dp"
             android:paddingTop="20dp">
             <TextView
-                android:layout_marginRight="82dp"
+                android:layout_marginEnd="82dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:text="@string/field_old_password"
                 android:textColor="@color/black"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtxt_oldPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 app:boxBackgroundColor="@color/whiteTextColor"
@@ -81,6 +86,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="@style/modifiedEditText"
                     android:paddingStart="2dp"
                     android:hint=""
                     android:inputType="textPassword" />
@@ -88,18 +94,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_marginRight="79dp"
+                android:layout_marginEnd="79dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:text="@string/field_new_password"
                 android:textColor="@color/black"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtxt_newPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 app:boxBackgroundColor="@color/whiteTextColor"
@@ -108,7 +114,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    style="@style/modifiedEditText"
                     android:paddingStart="2dp"
                     android:hint=""
                     android:textColorHint="@color/colorAccent"
@@ -117,19 +123,17 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:layout_marginRight="70dp"
+                android:layout_marginEnd="70dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:text="@string/field_repeat_password"
-                android:textColor="@color/black"
-                />
+                android:textColor="@color/black"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtxt_repeatPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
+                style="@style/parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 app:boxBackgroundColor="@color/whiteTextColor"
@@ -138,37 +142,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:paddingStart="2dp"
-                    android:hint=""
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <TextView
-                android:layout_marginRight="70dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/change_email"
-                android:textColor="@color/black"
-                />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtxt_changeEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                app:boxBackgroundColor="@color/whiteTextColor"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
+                    style="@style/modifiedEditText"
                     android:paddingStart="2dp"
                     android:hint=""
                     android:inputType="textPassword" />
