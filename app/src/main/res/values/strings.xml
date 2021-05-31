@@ -58,4 +58,60 @@
     <string name="chat">Chat</string>
     <string name="apuntate">Apuntate</string>
     <string name="tarjeta">Tarjeta:</string>
+    <!--strings of the activity_settings -->
+    <!--account -->
+    <string name="account">Cuenta</string>
+    <string name="change_personal_info">Cambiar información personal</string>
+    <string name="change_email">Cambiar Email</string>
+    <string name="lenguage">Idioma</string>
+    <!--permission -->
+    <string name="permission">Permisos</string>
+    <string name="notification">Permitir Notificaciones</string>
+    <string name="acces_contact">Acceso a Contactos</string>
+    <string name="localization">Permitir Ubicación</string>
+    <string name="message">Permitir Mensajes de Otros</string>
+    <!--others -->
+    <string name="others">Otros</string>
+    <string name="privacity">Politica de Privacidad</string>
+    <string name="contact">Contacto</string>
+    <string name="about_us">Sobre Nosotros</string>
+    <string name="log_out">Cerrar Sesion</string>
+    !-- Personal Info-->
+    <string name="personal_info">Personal Info</string>
+
+    <!--field strings  of the activity_change_password-->
+    <string name="field_old_password">Old Password:</string>
+    <string name="field_new_password">New Password:</string>
+    <string name="field_repeat_password">Repeat Password:</string>
+
+    <!--strings of the activity_change_email-->
+    <string name="title_change_personal_info">Change Personal Information</string>
+    <string name="email_address">E-mail Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="gender">Gender</string>
+    <string name="birthday">Birthday</string>
+
+    <!--strings of the activity_contact -->
+    <string name="title_numero">Este es nuestro número de teléfono:</string>
+    <string name="numero">69439226</string>
+    <string name="title_email">Puedes enviarnos un E-mail:</string>
+    <string name="email">eventsports@gmail.com</string>
+    <string name="title_redes_sociales">Nuestras redes sociales:</string>
+    <string name="redes_sociales_insta">eventSports</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>
