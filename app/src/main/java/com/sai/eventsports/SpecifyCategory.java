@@ -1,6 +1,7 @@
 package com.sai.eventsports;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
@@ -54,11 +55,19 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         setContentView(R.layout.activity_specify_category);
         Intent intent = getIntent();
         titulo = intent.getStringExtra("NombreEvento");
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            return;
+        }
+        int res = extras.getInt("resourseInt");
+
         Log.d("Bien",titulo+"");
         nombre=findViewById(R.id.toolbar_specify_category);
         nombre.setTitle(titulo);
         recyclerView=findViewById(R.id.recyclerEvents);
         fondo=findViewById(R.id.fondo);
+        Bitmap bitmap = intent.getParcelableExtra("Fondo");
+        fondo.setImageBitmap(bitmap);
         clases = findViewById(R.id.clases);
         eventos = findViewById(R.id.eventos);
         linearLayout= findViewById(R.id.bottomSheet);
@@ -82,7 +91,7 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
                 Log.d("estado",bottomSheetBehavoir.getState()+"");
                 switch(newState){
                         case BottomSheetBehavior.STATE_EXPANDED:
-                            drawable.setColorFilter(Color.BLACK,PorterDuff.Mode.LIGHTEN);
+                            drawable.setColorFilter(Color.BLACK,PorterDuff.Mode.OVERLAY);
                             fondo.setImageDrawable(drawable);
                             recyclerView.setVisibility(View.VISIBLE);
                             bottomSheetBehavoir.setDraggable(true);
@@ -98,7 +107,6 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
                                 eventos.setText("Eventos");
                                 eventos.setAlpha(1f);
                                 eventos.setTypeface(null, 0);
-                                fondo.setImageAlpha(500);
                                 bottomSheetBehavoir.setDraggable(false);
                                 break;
                 }

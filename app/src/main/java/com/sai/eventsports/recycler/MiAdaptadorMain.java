@@ -2,8 +2,12 @@ package com.sai.eventsports.recycler;
 
 
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +61,8 @@ public class MiAdaptadorMain extends RecyclerView.Adapter<MiAdaptadorMain.ViewHo
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(),SpecifyCategory.class);
                 intent.putExtra("NombreEvento",i.getNombre());
+                Bitmap bitmap = ((BitmapDrawable)holder.imgDeporte.getDrawable()).getBitmap();
+                intent.putExtra("Fondo",bitmap);
                 Log.d("bien",i.getNombre());
                 v.getContext().startActivity(intent);
             }
