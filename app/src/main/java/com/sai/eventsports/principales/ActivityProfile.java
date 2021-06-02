@@ -19,19 +19,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.sai.eventsports.CollectData;
+import com.sai.eventsports.ActivitySettings;
 import com.sai.eventsports.entidades.ImagenDeporte;
 import com.sai.eventsports.recycler.MiAdaptadorMain;
 import com.sai.eventsports.R;
@@ -109,7 +103,7 @@ public class ActivityProfile extends AppCompatActivity {
             }
         });
         Glide.with(getApplicationContext())
-                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + ActivityLogIn.USERUID + ".jpg?alt=media&token=7437589e-16cb-4f09-8c58-3b4f1e6187be"))
+                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + ActivityLogIn.USERUID + ".jpg?alt=media&token=5d406923-e2fd-4e85-8c3e-21a0d2630e83"))
                 .placeholder(R.drawable.ic_profile)
                 .centerCrop()
                 .transition(DrawableTransitionOptions.withCrossFade(300))

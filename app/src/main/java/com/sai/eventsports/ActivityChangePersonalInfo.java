@@ -1,4 +1,4 @@
-package com.sai.eventsports.principales;
+package com.sai.eventsports;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.sai.eventsports.R;
 
 public class ActivityChangePersonalInfo extends AppCompatActivity {
 

@@ -55,7 +55,7 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         Intent intent = getIntent();
         titulo = intent.getStringExtra("NombreEvento");
         Log.d("Bien",titulo+"");
-        nombre=findViewById(R.id.toolbar_profile);
+        nombre=findViewById(R.id.toolbar_specify_category);
         nombre.setTitle(titulo);
         recyclerView=findViewById(R.id.recyclerEvents);
         fondo=findViewById(R.id.fondo);

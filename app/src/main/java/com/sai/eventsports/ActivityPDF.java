@@ -1,4 +1,4 @@
-package com.sai.eventsports.principales;
+package com.sai.eventsports;
 
 import android.os.Bundle;
 import android.webkit.WebView;
