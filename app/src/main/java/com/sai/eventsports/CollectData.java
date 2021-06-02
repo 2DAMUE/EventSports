@@ -16,6 +16,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sai.eventsports.entidades.Evento;
+import com.sai.eventsports.entidades.Mensaje;
 import com.sai.eventsports.entidades.User;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
@@ -152,6 +153,51 @@ public class CollectData {
             }
         });
     }
+    public static void traerUsuarioChat(ComunicacionChat comunicacionChat, String userId) {
+        List<User> user = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerUser = myDatabase.getReference("Users").child(userId);
+        traerUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User u = snapshot.getValue(User.class);
+                user.add(u);
+                comunicacionChat.mandarUsuario(user);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public static void subirMensaje(String s, Mensaje m, String userid, String titulo) {
+        DatabaseReference referenceChat = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference referenceMessage = referenceChat.child("Chats").child(userid + "-" + titulo);
+        referenceMessage.child(s).setValue(m);
+    }
+
+    public static void recogerChat(ComunicacionChat comunicacionChat, String titulo, String userid, String h) {
+        DatabaseReference referenceChat = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference referenceMessage = referenceChat.child("Chats").child(userid + "-" + titulo);
+        referenceMessage.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> datos = snapshot.getChildren();
+                List<Mensaje> listaChat = new ArrayList<>();
+                for (DataSnapshot d : datos) {
+                    Mensaje m = d.getValue(Mensaje.class);
+                    listaChat.add(m);
+                    comunicacionChat.madarChat(listaChat);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     public interface Comunicacion{
         void mandarUsuarios(List<User> users);
@@ -160,5 +206,9 @@ public class CollectData {
     public interface ComunicacionVista{
         void mandarEvento(List<Evento> eventos);
         void mandarUsuario(List<User> user);
+    }
+    public interface ComunicacionChat{
+        void mandarUsuario(List<User> user);
+        void madarChat(List<Mensaje> listaChat);
     }
 }

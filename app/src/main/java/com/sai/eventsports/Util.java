@@ -8,7 +8,11 @@ import android.widget.EditText;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Util {
     public static String chageName(String email) {
@@ -32,5 +36,15 @@ public class Util {
             e.printStackTrace();
         }
         return coords;
+    }
+    public static String[] cogerHora() {
+        Timestamp stamp = new Timestamp(System.currentTimeMillis());
+        Date date = new Date(stamp.getTime());
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        String formattedDate = sdf.format(date);
+        String timeInMiliseconds = String.valueOf(stamp.getTime());
+        String[] array = {formattedDate, timeInMiliseconds};
+        return array;
     }
 }
