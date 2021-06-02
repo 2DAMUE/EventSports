@@ -45,7 +45,7 @@
     <!-- BOTTON NAV -->
     <string name="home">Home</string>
     <string name="mapa">Mapa</string>
-    <string name="nuevo_evento">Nuevo Evento</string>
+    <string name="nuevo_evento">Nuevo Evento o Clase</string>
     <string name="comunidad">Comunidad</string>
     <string name="perfil">Perfil</string>
     <string name="title_activity_maps">Map</string>
@@ -58,6 +58,8 @@
     <string name="chat">Chat</string>
     <string name="apuntate">Apuntate</string>
     <string name="tarjeta">Tarjeta:</string>
+    <string name="tarjeta2">Tarjeta</string>
+    <string name="efectivo">Efectivo</string>
     <!--strings of the activity_settings -->
     <!--account -->
     <string name="account">Cuenta</string>
@@ -111,7 +113,6 @@
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

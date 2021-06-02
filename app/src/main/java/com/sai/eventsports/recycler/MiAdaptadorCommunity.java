@@ -48,7 +48,7 @@ public class MiAdaptadorCommunity extends RecyclerView.Adapter<MiAdaptadorCommun
     public void onBindViewHolder(final MiAdaptadorCommunity.ViewHolder holder, final int position){
         User u = mData.get(position);
         Glide.with(view)
-                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + u.getUserID() + ".jpg?alt=media&token=7437589e-16cb-4f09-8c58-3b4f1e6187be"))
+                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/stellar-operand-305716.appspot.com/o/FotosPerfil%2F" + u.getUserID() + ".jpg?alt=media&token=5d406923-e2fd-4e85-8c3e-21a0d2630e83"))
                 .placeholder(R.drawable.ic_profile)
                 .centerCrop()
                 .transition(DrawableTransitionOptions.withCrossFade(300))

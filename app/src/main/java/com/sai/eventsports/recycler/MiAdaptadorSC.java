@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.card.MaterialCardView;
+import com.sai.eventsports.ActivityEvents;
 import com.sai.eventsports.R;
 import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.principales.ActivityProfile;
@@ -59,10 +60,10 @@ public class MiAdaptadorSC extends RecyclerView.Adapter<MiAdaptadorSC.ViewHolder
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CAmbiar!!!!
-                Intent intent = new Intent(view.getContext(), ActivityProfile.class);
+                Intent intent = new Intent(view.getContext(), ActivityEvents.class);
+                intent.putExtra("Deporte",e.getDeporte());
                 intent.putExtra("NombreEvento",e.getNombre());
-                Log.d("bien",e.getNombre());
+                intent.putExtra("UserIdEvento",e.getUserid());
                 v.getContext().startActivity(intent);
             }
         });

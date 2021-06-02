@@ -1,4 +1,4 @@
-package com.sai.eventsports.principales;
+package com.sai.eventsports;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,12 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.sai.eventsports.R;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 public class ActivitySettings extends AppCompatActivity {

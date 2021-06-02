@@ -117,8 +117,48 @@ public class CollectData {
         });
     }
 
+    public static void traerEvento(ComunicacionVista comunicacionVista, String userId, String titulo) {
+        List<Evento> evento = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerUser = myDatabase.getReference("Eventos").child(userId + "-" + titulo);
+        traerUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Evento e = snapshot.getValue(Evento.class);
+                evento.add(e);
+                comunicacionVista.mandarEvento(evento);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public static void traerUsuario(ComunicacionVista comunicacionVista, String userId) {
+        List<User> user = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerUser = myDatabase.getReference("Users").child(userId);
+        traerUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User u = snapshot.getValue(User.class);
+                user.add(u);
+                comunicacionVista.mandarUsuario(user);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     public interface Comunicacion{
         void mandarUsuarios(List<User> users);
         void mandarEventos(List<Evento> eventos);
+    }
+    public interface ComunicacionVista{
+        void mandarEvento(List<Evento> eventos);
+        void mandarUsuario(List<User> user);
     }
 }

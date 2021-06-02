@@ -76,14 +76,14 @@
             android:name=".ActivityEvents"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".principales.ActivitySettings"
+            android:name=".ActivitySettings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".principales.ActivityChangePersonalInfo"
+            android:name=".ActivityChangePersonalInfo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".principales.ActivityPDF"
-            android:parentActivityName=".principales.ActivitySettings" />
+            android:name=".ActivityPDF"
+            android:parentActivityName=".ActivitySettings" />
     </application>
 
 </manifest>
