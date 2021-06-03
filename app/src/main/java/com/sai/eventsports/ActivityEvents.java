@@ -28,7 +28,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
     private String titulo, UserId, nom;
     private CollectData.ComunicacionVista comunicacionVista = this;
     private RadioButton rb1, rb2;
-    Button btn_apuntate;
+    private Button btn_apuntate, btn_chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
         rb1 = findViewById(R.id.radioButton);
         rb2 = findViewById(R.id.radioButton2);
         btn_apuntate = findViewById(R.id.button3);
+        btn_chat = findViewById(R.id.button2);
 
         CollectData.traerEvento(comunicacionVista,UserId,titulo);
         CollectData.traerUsuario(comunicacionVista,UserId);
@@ -91,11 +92,22 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
         vuelta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(ActivityEvents.this,SpecifyCategory.class);
-                intent1.putExtra("NombreEvento",nom);
-                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent1);
+                Intent intent = new Intent(ActivityEvents.this,SpecifyCategory.class);
+                intent.putExtra("NombreEvento",nom);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+        btn_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityEvents.this,ActivityChat.class);
+                intent.putExtra("Titulo",titulo);
+                intent.putExtra("id",UserId);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }

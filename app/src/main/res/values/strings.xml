@@ -4,7 +4,7 @@
     <string name="login_texto">Iniciar Sesión</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Contraseña</string>
-    <string name="forgot_password">Olvidaste tu Contraseña?</string>
+    <string name="forgot_password">¿Olvidaste tu Contraseña?</string>
     <string name="login">Entrar</string>
     <string name="new_user_register_now">Registrate ahora</string>
     <string name="use_other_methods">Otros Metodos</string>
@@ -14,7 +14,7 @@
     <string name="confirm_password">Confirmar Contraseña</string>
     <string name="log_in_now">Inicia Sesión</string>
     <!-- FORGOTPASSWD -->
-    <string name="has_olvidado_tu_contrase_a">¿Has olvidado tu Contraseña?</string>
+    <string name="has_olvidado_tu_contrase_a">¿Olvidaste tu Contraseña?</string>
     <string name="texto_forgotpasswd">Escribe tu Email y te llegara un correo con tu nueva contraseña.</string>
     <string name="enviar">Enviar</string>
     <!-- MAIN -->
@@ -24,8 +24,8 @@
     <!-- PROFILE -->
     <string name="profile">Perfil</string>
     <!-- NEW EVENT -->
-    <string name="new_event">Nuevo Evento</string>
-    <string name="escoge_una_imagen_para_su_evento">Escoja una imagen para su Evento:</string>
+    <string name="new_event">Nuevo Evento o Clase</string>
+    <string name="escoge_una_imagen_para_su_evento">Escoja una imagen para su Evento/Clase:</string>
     <string name="datos">DATOS</string>
     <string name="t_tulo">Título</string>
     <string name="direcci_n">Dirección</string>

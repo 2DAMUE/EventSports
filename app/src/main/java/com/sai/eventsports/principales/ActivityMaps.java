@@ -150,8 +150,8 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
             Log.d("Coordenadas", latitud + " " + longitud);
             // Add a marker in Sydney and move the camera
             LatLng ubi = new LatLng(latitud, longitud);
-            mMap.addMarker(new MarkerOptions().position(ubi).title("Mi Ubicación").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(ubi));
+            mMap.addMarker(new MarkerOptions().position(ubi).title("Mi Ubicación").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi,10));
         }
     }
 
@@ -164,7 +164,7 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
         if (tipo.equals("Evento")) {
             mMap.addMarker(new MarkerOptions().position(ubi)
                     .title(titulo)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
         } else if (tipo.equals("Clase")) {
             mMap.addMarker(new MarkerOptions().position(ubi)
                     .title(titulo)
