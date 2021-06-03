@@ -4,7 +4,7 @@
     <color name="azul_medio">#33658C</color>
     <color name="azul_clarito">#FF03DAC5</color>
     <color name="azul_extra_clarito">#51AAC2FF</color>
-    <color name="verde_extra_clarito">#7D80FD6A</color>
+    <color name="verde_extra_clarito">#7DA1FF91</color>
     <color name="black">#FF000000</color>
     <color name="black2">#333333</color>
     <color name="white">#FFFFFFFF</color>
@@ -12,6 +12,8 @@
 
     <color name="teal_700">#FF018786</color>
     <color name="red">#FF0000</color>
+    <color name="amarillo">#FFEB3B</color>
+    <color name="naranja">#FF9800</color>
     <!-- -->
     <color name="whiteTextColor">#fff</color>
     <color name="colorAccent">#033861</color>

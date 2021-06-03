@@ -14,10 +14,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.sai.eventsports.R;
 import com.sai.eventsports.entidades.Mensaje;
+import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.List;
 
-public class MiAdaptadorChat extends RecyclerView.Adapter<MiAdaptadorChat.ViewHolder>{
+public class MiAdaptadorChat extends RecyclerView.Adapter<MiAdaptadorChat.ViewHolder> {
     private List<Mensaje> lista;
     private View vista;
 
@@ -28,7 +29,11 @@ public class MiAdaptadorChat extends RecyclerView.Adapter<MiAdaptadorChat.ViewHo
     @NonNull
     @Override
     public MiAdaptadorChat.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_chat,parent,false);
+        if (viewType == 1) {
+            vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_chat2, parent, false);
+        } else {
+            vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_chat, parent, false);
+        }
         return new MiAdaptadorChat.ViewHolder(vista);
     }
 
@@ -52,8 +57,8 @@ public class MiAdaptadorChat extends RecyclerView.Adapter<MiAdaptadorChat.ViewHo
         return lista.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView txt_mensaje,txt_username,txt_hora;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView txt_mensaje, txt_username, txt_hora;
         public ImageView img;
 
         public ViewHolder(View vista) {
@@ -63,5 +68,15 @@ public class MiAdaptadorChat extends RecyclerView.Adapter<MiAdaptadorChat.ViewHo
             this.txt_hora = vista.findViewById(R.id.text_hora_chat_View);
             this.img = vista.findViewById(R.id.img_chat_view);
         }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (lista.get(position).getUid_user().equals(ActivityLogIn.USERUID)) {
+            return 1;
+        } else {
+            return -1;
+        }
+        //return super.getItemViewType(position);
     }
 }

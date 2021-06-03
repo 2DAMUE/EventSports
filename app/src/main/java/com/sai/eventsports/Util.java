@@ -37,6 +37,7 @@ public class Util {
         }
         return coords;
     }
+
     public static String[] cogerHora() {
         Timestamp stamp = new Timestamp(System.currentTimeMillis());
         Date date = new Date(stamp.getTime());
