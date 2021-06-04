@@ -77,6 +77,5 @@ public class MiAdaptadorChat extends RecyclerView.Adapter<MiAdaptadorChat.ViewHo
         } else {
             return -1;
         }
-        //return super.getItemViewType(position);
     }
 }
