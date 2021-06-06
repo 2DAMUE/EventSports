@@ -51,6 +51,26 @@
                     android:textColor="@color/azul_medio"
                     android:textSize="25sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewEmailProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Usuario"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textViewUserTelefonofile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Usuario"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
                 <!--</com.google.android.material.appbar.AppBarLayout>-->
 
             </LinearLayout>
@@ -61,7 +81,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
-                android:text="Registers"
+                android:text="@string/actividades_apuntadas"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -78,7 +98,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
-                android:text="Publications"
+                android:text="@string/publicaciones"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />

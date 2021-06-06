@@ -68,7 +68,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_location"/>
+                            android:src="@drawable/logo_gris"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -90,6 +90,9 @@
                                 android:textSize="15sp"
                                 android:textColor="@color/black2"
                                 android:text="TextView" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -103,6 +106,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_location"/>
                         <LinearLayout
+                            android:id="@+id/verMapa"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -123,6 +127,15 @@
                                 android:textSize="15sp"
                                 android:textColor="@color/black2"
                                 android:text="TextView" />
+                            <TextView
+                                android:id="@+id/textmapa"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:gravity="right"
+                                android:textSize="15sp"
+                                android:textColor="@color/colorAccent"
+                                android:text="@string/ver_en_el_mapa" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -241,7 +254,7 @@
                     android:textStyle="bold"
                     android:visibility="visible" />
 
-                <TextView
+                <EditText
                     android:id="@+id/textTarjeta"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

@@ -20,33 +20,49 @@ import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sai.eventsports.ActivitySettings;
+import com.sai.eventsports.CollectData;
+import com.sai.eventsports.entidades.Apuntate;
+import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.entidades.ImagenDeporte;
+import com.sai.eventsports.entidades.User;
 import com.sai.eventsports.recycler.MiAdaptadorMain;
 import com.sai.eventsports.R;
+import com.sai.eventsports.recycler.MiAdaptadorProfile;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityProfile extends AppCompatActivity {
+public class ActivityProfile extends AppCompatActivity implements CollectData.ComunicacionApuntate {
 
     private BottomNavigationView bnv;
     private static final int REQUEST_PERMISSON_CODE = 100;
     private static final int REQUEST_IMAGE_GALLERY = 101;
     private Uri imageUri;
     private ImageView galleryImage;
-    private List<ImagenDeporte> elements;
+    private RecyclerView recyclerViewPublications;
+    private RecyclerView recyclerViewRegisters;
+    private List<Evento> elements = new ArrayList<>();;
+    private CollectData.ComunicacionApuntate comunicacionApuntate = this;
+    private TextView userName, email, tlf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        recyclerViewPublications = findViewById(R.id.mi_RecyclerPublications);
+        recyclerViewRegisters = findViewById(R.id.mi_RecyclerRegisters);
+        userName = findViewById(R.id.textViewUserNameProfile);
+        email = findViewById(R.id.textViewEmailProfile);
+        tlf = findViewById(R.id.textViewUserTelefonofile);
 
         bnv = findViewById(R.id.nav_profile);
         bnv.setSelectedItemId(R.id.navigation_profile);
@@ -109,36 +125,12 @@ public class ActivityProfile extends AppCompatActivity {
                 .transition(DrawableTransitionOptions.withCrossFade(300))
                 .circleCrop()
                 .into(galleryImage);
-        init();
+
+        CollectData.traerUsuarioPerfil(comunicacionApuntate,ActivityLogIn.USERUID);
+        CollectData.traerApuntate(comunicacionApuntate,ActivityLogIn.USERUID);
+        CollectData.recogerEventosApuntate(comunicacionApuntate);
     }
 
-    public void init(){
-        elements = new ArrayList<>();
-        elements.add(new ImagenDeporte("Futbol",R.drawable.bota));
-        elements.add(new ImagenDeporte("Baloncesto", R.drawable.baloncesto));
-        elements.add(new ImagenDeporte("Tenis", R.drawable.tenis));
-        elements.add(new ImagenDeporte("Voleibol", R.drawable.voleibol));
-        elements.add(new ImagenDeporte("Natación", R.drawable.natacion));
-        elements.add(new ImagenDeporte("Badminton", R.drawable.branded));
-        elements.add(new ImagenDeporte("Atletismo", R.drawable.atle));
-        elements.add(new ImagenDeporte("Balonmano", R.drawable.bola));
-        elements.add(new ImagenDeporte("Waterpolo", R.drawable.waterpolo));
-        elements.add(new ImagenDeporte("Padel", R.drawable.padel));
-        elements.add(new ImagenDeporte("Ajedrez", R.drawable.ajedrez));
-
-        MiAdaptadorMain listAdapter1 = new MiAdaptadorMain(elements);
-        MiAdaptadorMain listAdapter2 = new MiAdaptadorMain(elements);
-        RecyclerView recyclerViewPublications = findViewById(R.id.mi_RecyclerPublications);
-        RecyclerView recyclerViewRegisters = findViewById(R.id.mi_RecyclerRegisters);
-        recyclerViewPublications.setHasFixedSize(true);
-        recyclerViewRegisters.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityProfile.this,LinearLayoutManager.HORIZONTAL,false);
-        LinearLayoutManager layoutManager2 = new LinearLayoutManager(ActivityProfile.this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerViewPublications.setLayoutManager(layoutManager);
-        recyclerViewPublications.setAdapter(listAdapter1);
-        recyclerViewRegisters.setLayoutManager(layoutManager2);
-        recyclerViewRegisters.setAdapter(listAdapter2);
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -198,4 +190,44 @@ public class ActivityProfile extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public void mandarApuntate(List<Apuntate> deportes) {
+        for (Apuntate a:deportes) {
+            CollectData.traerEventoApuntate(comunicacionApuntate,a.getId(),a.getTitulo());
+        }
+    }
+
+    @Override
+    public void mandarEventos(List<Evento> eventos) {
+        List<Evento> eventos1 = new ArrayList<>();
+        for (Evento e:eventos) {
+            if(e.getUserid().equals(ActivityLogIn.USERUID)){
+                eventos1.add(e);
+            }
+        }
+        MiAdaptadorProfile listAdapter = new MiAdaptadorProfile(eventos1);
+        recyclerViewPublications.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityProfile.this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewPublications.setLayoutManager(layoutManager);
+        recyclerViewPublications.setAdapter(listAdapter);
+    }
+
+    @Override
+    public void mandarEvento(List<Evento> evento) {
+        elements.addAll(evento);
+        MiAdaptadorProfile listAdapter = new MiAdaptadorProfile(elements);
+        recyclerViewRegisters.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityProfile.this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerViewRegisters.setLayoutManager(layoutManager);
+        recyclerViewRegisters.setAdapter(listAdapter);
+    }
+
+    @Override
+    public void mandarUsuario(List<User> user) {
+        for (User u:user) {
+            userName.setText(u.getUser());
+            email.setText(u.getEmail());
+            tlf.setText(u.getTlf());
+        }
+    }
 }
