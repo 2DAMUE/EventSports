@@ -206,7 +206,7 @@ public class ActivityProfile extends AppCompatActivity implements CollectData.Co
             }
         }
         MiAdaptadorProfile listAdapter = new MiAdaptadorProfile(eventos1);
-        recyclerViewPublications.setHasFixedSize(true);
+        //recyclerViewPublications.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityProfile.this,LinearLayoutManager.HORIZONTAL,false);
         recyclerViewPublications.setLayoutManager(layoutManager);
         recyclerViewPublications.setAdapter(listAdapter);
@@ -216,7 +216,7 @@ public class ActivityProfile extends AppCompatActivity implements CollectData.Co
     public void mandarEvento(List<Evento> evento) {
         elements.addAll(evento);
         MiAdaptadorProfile listAdapter = new MiAdaptadorProfile(elements);
-        recyclerViewRegisters.setHasFixedSize(true);
+        //recyclerViewRegisters.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(ActivityProfile.this,LinearLayoutManager.HORIZONTAL,false);
         recyclerViewRegisters.setLayoutManager(layoutManager);
         recyclerViewRegisters.setAdapter(listAdapter);
