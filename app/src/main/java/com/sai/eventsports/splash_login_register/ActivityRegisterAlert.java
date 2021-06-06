@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -70,20 +71,27 @@ public class ActivityRegisterAlert extends AppCompatActivity {
         Intent intent = getIntent();
         String email = intent.getStringExtra("userGoogle");
         String userName = intent.getStringExtra("userName");
-        if (userName == null){
+        if (userName == null) {
             userName = Util.chageName(email);
         }
         String finalUserName = userName;
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User u = new User(ActivityLogIn.USERUID, finalUserName,email, Objects.requireNonNull(tlf.getEditText()).getText().toString().trim());
-                CollectData.saveUser(u);
-                CollectData.saveImg(imageUri);
-                Intent accessIntent = new Intent(getApplicationContext(), ActivityMain.class);
-                accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(accessIntent);
+                String tel = Objects.requireNonNull(tlf.getEditText()).getText().toString().trim();
+                if (imageUri == null) {
+                    Toast.makeText(getApplicationContext(), "Escoja una imagen", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(tel)) {
+                    tlf.setError("Escriba su número de teléfono");
+                } else {
+                    User u = new User(ActivityLogIn.USERUID, finalUserName, email, tel);
+                    CollectData.saveUser(u);
+                    CollectData.saveImg(imageUri);
+                    Intent accessIntent = new Intent(getApplicationContext(), ActivityMain.class);
+                    accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(accessIntent);
+                }
             }
         });
     }
@@ -124,7 +132,6 @@ public class ActivityRegisterAlert extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(intent, REQUEST_IMAGE_GALLERY);
     }
-
 
 
 }

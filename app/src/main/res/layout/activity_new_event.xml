@@ -195,13 +195,25 @@
                     android:text="@string/tipo_clase_evento"
                     android:textColor="@color/azul_medio"
                     android:textSize="15sp" />
-
-                <Spinner
-                    android:id="@+id/spinner_tipo"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp" />
+                    android:layout_marginEnd="5dp">
+                    <RadioButton
+                        android:id="@+id/radioButtonEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/evento" />
+                    <RadioButton
+                        android:id="@+id/radioButtonClase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/clase" />
+                </RadioGroup>
 
                 <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                     android:id="@+id/btn_crear"

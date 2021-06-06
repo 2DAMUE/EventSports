@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -37,26 +39,28 @@ import java.util.Objects;
 
 public class ActivityNewEvent extends AppCompatActivity {
 
-    private Spinner miSpn;
+    private RadioButton rbClase, rbEvento;
     private BottomNavigationView bnv;
-    private int posicion,posicionDeporte;
+    private int posicion, posicionDeporte;
     private Button btnCrear;
     private TextInputLayout titulo;
     private TextInputLayout descripcion;
     private Spinner spinnerDeporte;
-    private TextInputLayout direccion,num,localidad;
+    private TextInputLayout direccion, num, localidad;
     private Context context = this;
     private static final int REQUEST_PERMISSON_CODE = 100;
     private static final int REQUEST_IMAGE_GALLERY = 101;
     private Uri imageUri;
     private ImageView galleryImage;
+    private String tipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_event);
 
-        miSpn = findViewById(R.id.spinner_tipo);
+        rbClase = findViewById(R.id.radioButtonClase);
+        rbEvento = findViewById(R.id.radioButtonEvento);
         btnCrear = findViewById(R.id.btn_crear);
         titulo = findViewById(R.id.textInputTitulo);
         descripcion = findViewById(R.id.textInputDescripcion);
@@ -93,20 +97,24 @@ public class ActivityNewEvent extends AppCompatActivity {
             }
         });
 
-        String[] tipoEvent = {"Evento","Clase"};
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,tipoEvent);
-        miSpn.setAdapter(adaptador);
-
-        miSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        rbEvento.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                posicion = position;
+            public void onClick(View v) {
+                if (rbEvento.isChecked()) {
+                    tipo = "Evento";
+                }
             }
+        });
+        rbClase.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onClick(View v) {
+                if (rbClase.isChecked()) {
+                    tipo = "Clase";
+                }
+            }
         });
         String[] tipoDeporte = {"Futbol", "Baloncesto", "Tenis", "Voleibol", "Natación", "Badminton", "Atletismo", "Balonmano", "Waterpolo", "Padel", "Ajedrez"};
-        ArrayAdapter<String> adaptado = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,tipoDeporte);
+        ArrayAdapter<String> adaptado = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, tipoDeporte);
         spinnerDeporte.setAdapter(adaptado);
 
         spinnerDeporte.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -114,20 +122,39 @@ public class ActivityNewEvent extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 posicionDeporte = position;
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double[] coordenadas = Util.takeCoordenadas(context,Objects.requireNonNull(direccion.getEditText()).getText().toString().trim(), Objects.requireNonNull(num.getEditText()).getText().toString().trim(), Objects.requireNonNull(localidad.getEditText()).getText().toString().trim());
-                double latitud = coordenadas[0];
-                double longitud = coordenadas[1];
-                String direc = Objects.requireNonNull(direccion.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(num.getEditText()).getText().toString().trim() + "," + Objects.requireNonNull(localidad.getEditText()).getText().toString().trim();
-                Evento e = new Evento(ActivityLogIn.USERUID, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim(),latitud,longitud, direc, Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim(),tipoEvent[posicion], tipoDeporte[posicionDeporte]);
-                CollectData.saveImgEvent(imageUri, Objects.requireNonNull(titulo.getEditText()).getText().toString().trim());
-                CollectData.saveEvento(e);
-                startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+                String dir = Objects.requireNonNull(direccion.getEditText()).getText().toString().trim();
+                String numerito = Objects.requireNonNull(num.getEditText()).getText().toString().trim();
+                String loca = Objects.requireNonNull(localidad.getEditText()).getText().toString().trim();
+                String tituloo = Objects.requireNonNull(titulo.getEditText()).getText().toString().trim();
+                String desc = Objects.requireNonNull(descripcion.getEditText()).getText().toString().trim();
+                if (imageUri == null) {
+                    Toast.makeText(getApplicationContext(), "Escoja una imagen", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(tituloo)) {
+                    titulo.setError("Escriba un Titulo");
+                } else if (TextUtils.isEmpty(dir)) {
+                    direccion.setError("Escriba una Dirección");
+                } else if (TextUtils.isEmpty(loca)) {
+                    localidad.setError("Escriba una Localidad");
+                } else if (TextUtils.isEmpty(desc)) {
+                    descripcion.setError("Escriba una Descripción");
+                } else {
+                    double[] coordenadas = Util.takeCoordenadas(context, dir, numerito, loca);
+                    double latitud = coordenadas[0];
+                    double longitud = coordenadas[1];
+                    String direc = dir + "," + numerito + "," + loca;
+                    Evento e = new Evento(ActivityLogIn.USERUID, tituloo, latitud, longitud, direc, desc, tipo, tipoDeporte[posicionDeporte]);
+                    CollectData.saveImgEvent(imageUri, tituloo);
+                    CollectData.saveEvento(e);
+                    startActivity(new Intent(getApplicationContext(), ActivityMain.class));
+                }
             }
         });
 

@@ -85,6 +85,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
                 .transition(DrawableTransitionOptions.withCrossFade(300))
                 .circleCrop()
                 .into(imgUser);
+
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
