@@ -51,29 +51,59 @@
                     android:textColor="@color/azul_medio"
                     android:textSize="25sp"
                     android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/textViewEmailProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Usuario"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/textViewUserTelefonofile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Usuario"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+
                 <!--</com.google.android.material.appbar.AppBarLayout>-->
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_email"
+                    android:layout_marginLeft="100dp"></ImageView>
+            <TextView
+                android:id="@+id/textViewEmailProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="Usuario"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" /></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_phone"
+                        android:layout_marginLeft="100dp"></ImageView>
+            <TextView
+                android:id="@+id/textViewUserTelefonofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="Usuario"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+                </LinearLayout></LinearLayout>
             <TextView
                 android:id="@+id/textViewRegistersRv"
                 android:layout_width="wrap_content"

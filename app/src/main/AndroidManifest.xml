@@ -54,7 +54,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".principales.ActivityProfile"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
         <activity android:name=".splash_login_register.ActivityForgotPassword" />
         <activity
             android:name=".splash_login_register.ActivitySignUp"
@@ -65,7 +66,11 @@
         <activity
             android:name=".splash_login_register.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SpecifyCategory"
@@ -79,11 +84,6 @@
         <activity
             android:name=".ActivitySettings"
             android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ActivityChangeUser"
