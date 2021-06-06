@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.sai.eventsports.splash_login_register.ActivityChangePhone;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 public class ActivitySettings extends AppCompatActivity {
@@ -20,28 +22,44 @@ public class ActivitySettings extends AppCompatActivity {
     private LinearLayout politicaDePrivacidad;
     private LinearLayout contacto;
 
-    private LinearLayout changePersonalInfo;
+    private LinearLayout changeUser;
+    private LinearLayout changePhone;
     private LinearLayout changePersonalInf;
+
+    private Switch switchContactos;
+    int REQUEST_CODE = 200;
 
     //Google
     private GoogleSignInClient mGoogleSignInClient;
     //Facebook
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        switchContactos = findViewById(R.id.switch_contactos);
         cerrarSesion = findViewById(R.id.cerrar_sesion);
         politicaDePrivacidad = findViewById(R.id.politica_privacidad);
         contacto = findViewById(R.id.contacto);
-        changePersonalInfo = findViewById(R.id.cambiar_contraseña);
+        changeUser = findViewById(R.id.cambiar_usuario);
+        changePhone = findViewById(R.id.cambiar_telefono);
 
-        changePersonalInfo.setOnClickListener(new View.OnClickListener() {
+        changeUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivitySettings.this, ActivityChangePersonalInfo.class);
+                Intent intent = new Intent(ActivitySettings.this, ActivityChangeUser.class);
+                startActivity(intent);
+            }
+
+        });
+
+        changePhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivitySettings.this, ActivityChangePhone.class);
                 startActivity(intent);
             }
 
@@ -87,7 +105,21 @@ public class ActivitySettings extends AppCompatActivity {
                 showAlertDialogContact();
             }
         });
+
     }
+
+    /*@RequiresApi(api = Build.VERSION_CODES.M)
+    public void onclick(View view){
+
+        if (view.getId() == R.id.switch_contactos){
+            if(switchContactos.isChecked()){
+            }else{
+
+            }
+
+        }
+    }*/
+
     /**
      * In this method, the password recovery screen has been implemented
      * as an alert dialog.
@@ -102,4 +134,17 @@ public class ActivitySettings extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+   /* @RequiresApi(api = Build.VERSION_CODES.M)
+    private void verificarPermisos() {
+        int permisos = ContextCompat.checkSelfPermission( this,Manifest.permission.READ_CONTACTS);
+        requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},REQUEST_CODE);
+        if(permisos == PackageManager.PERMISSION_GRANTED){
+
+            Toast.makeText(this, "Permiso ACEPTADO", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Permiso DENEGADO", Toast.LENGTH_SHORT).show();
+        }
+    }*/
 }

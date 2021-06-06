@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityChangePersonalInfo"
+    tools:context=".ActivityChangeUser"
     android:background="@drawable/pie_futbol">
 
 
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            app:title="@string/personal_info"
+            app:title="@string/change_user"
             app:titleTextColor="@color/colorAccent"
             tools:ignore="MissingConstraints" >
         </androidx.appcompat.widget.Toolbar>
@@ -71,12 +71,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="@string/field_old_password"
+                android:text="@string/field_old_user"
                 android:textColor="@color/black"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtxt_oldPassword"
+                android:id="@+id/edtxt_oldUser"
                 style="@style/parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
@@ -99,12 +99,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
-                android:text="@string/field_new_password"
+                android:text="@string/field_new_user"
                 android:textColor="@color/black"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtxt_newPassword"
+                android:id="@+id/edtxt_newUser"
                 style="@style/parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
@@ -122,32 +122,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_marginEnd="70dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:text="@string/field_repeat_password"
-                android:textColor="@color/black"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edtxt_repeatPassword"
-                style="@style/parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                app:boxBackgroundColor="@color/whiteTextColor"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/modifiedEditText"
-                    android:paddingStart="2dp"
-                    android:hint=""
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
             <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                 android:id="@+id/btn_save_change_settings"
                 style="@style/loginButton"

@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class ActivityChangePersonalInfo extends AppCompatActivity {
+public class ActivityChangeUser extends AppCompatActivity {
 
 
     ImageView icBack;
@@ -17,7 +17,7 @@ public class ActivityChangePersonalInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_personal_info);
+        setContentView(R.layout.activity_change_user);
 
         icBack = findViewById(R.id.ic_back);
         btn_saveChange = findViewById(R.id.btn_save_change_settings);
@@ -25,7 +25,7 @@ public class ActivityChangePersonalInfo extends AppCompatActivity {
         icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityChangePersonalInfo.this, ActivitySettings.class);
+                Intent intent = new Intent(ActivityChangeUser.this, ActivitySettings.class);
                 startActivity(intent);
             }
 
@@ -34,7 +34,7 @@ public class ActivityChangePersonalInfo extends AppCompatActivity {
         btn_saveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityChangePersonalInfo.this, ActivitySettings.class);
+                Intent intent = new Intent(ActivityChangeUser.this, ActivitySettings.class);
                 startActivity(intent);
             }
 
