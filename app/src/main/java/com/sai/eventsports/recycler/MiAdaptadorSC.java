@@ -1,7 +1,10 @@
 package com.sai.eventsports.recycler;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +22,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.card.MaterialCardView;
 import com.sai.eventsports.ActivityEvents;
 import com.sai.eventsports.R;
+import com.sai.eventsports.SpecifyCategory;
 import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.principales.ActivityProfile;
 
