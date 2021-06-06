@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -107,6 +109,8 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
                 if (lugar.equals("sc")) {
                     Intent intent = new Intent(ActivityEvents.this, SpecifyCategory.class);
                     intent.putExtra("NombreEvento", nom);
+                    Bitmap bitmap = ((BitmapDrawable) SpecifyCategory.fondo.getDrawable()).getBitmap();
+                    intent.putExtra("Fondo",bitmap);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

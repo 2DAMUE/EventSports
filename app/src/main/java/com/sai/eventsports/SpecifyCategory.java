@@ -1,5 +1,6 @@
 package com.sai.eventsports;
 
+import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -44,7 +45,7 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
     private static final String TAG=SpecifyCategory.class.getSimpleName();
     LinearLayout linearLayout;
     BottomSheetBehavior bottomSheetBehavoir;
-    ImageView fondo;
+    public static ImageView fondo;
     String titulo="";
 
 
