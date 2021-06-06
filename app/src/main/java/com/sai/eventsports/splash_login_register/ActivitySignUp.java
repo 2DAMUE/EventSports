@@ -53,26 +53,19 @@ public class ActivitySignUp extends AppCompatActivity {
         String confirmPwd = Objects.requireNonNull(confirmPasswd.getEditText()).getText().toString().trim();
 
         if (TextUtils.isEmpty(correo)){
-            email.setError("Enter your email");
-            return;
+            email.setError("Escriba un email");
         } else if (TextUtils.isEmpty(pwd)) {
-            passwd.setError("Enter your password");
-            return;
+            passwd.setError("Escriba una Contraseña");
         } else if (pwd.length() < 6) {
-            passwd.setError("Minimum length of password should be 6");
-            return;
+            passwd.setError("Minimo 6 números");
         } else if (TextUtils.isEmpty(usuario)) {
-            username.setError("Enter your username");
-            return;
+            username.setError("Escriba un usuario");
         } else if (TextUtils.isEmpty(confirmPwd)) {
-            confirmPasswd.setError("Confirm your password");
-            return;
+            confirmPasswd.setError("Confirma Contraseña");
         } else if (!pwd.equals(confirmPwd)) {
-            confirmPasswd.setError("Passwords are different");
-            return;
+            confirmPasswd.setError("La contraseña es diferente");
         } else if (!isValidEmail(correo)) {
-            email.setError("This is not a valid email");
-            return;
+            email.setError("Este correo no es valido");
         } else {
             firebaseAuthentification(correo,pwd);
         }
@@ -83,7 +76,7 @@ public class ActivitySignUp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Email and Password added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Email y Contraseña añadido", Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     String userId = firebaseUser.getUid();
                     ActivityLogIn.USERUID = userId;

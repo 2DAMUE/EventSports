@@ -145,16 +145,16 @@ public class ActivityLogIn extends AppCompatActivity implements CollectData.Comu
         String msgEmail = null,msgPass = null;
 
         if (TextUtils.isEmpty(correo)) {
-            msgEmail = "Enter your email";
+            msgEmail = "Escriba un email";
             email.setError(msgEmail);
         } else if (TextUtils.isEmpty(pwd)) {
-            msgPass = "Enter your password";
+            msgPass = "Escriba una Contraseña";
             password.setError(msgPass);
         } else if (pwd.length() < 6) {
-            msgPass = "Minimum length of password should be 6";
+            msgPass = "Minimo 6 números";
             password.setError(msgPass);
         } else if (!isValidEmail(correo)) {
-            msgEmail = "This is not a valid email";
+            msgEmail = "Este correo no es valido";
             email.setError(msgEmail);
         } else {
             firebaseAuth.signInWithEmailAndPassword(correo, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -167,7 +167,7 @@ public class ActivityLogIn extends AppCompatActivity implements CollectData.Comu
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(accessIntent);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Signed in failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Fallo al Iniciar Sesión", Toast.LENGTH_SHORT).show();
                         Log.d("ERRORLOGIN", task.getException().toString());
                     }
                 }
