@@ -63,7 +63,7 @@ public class MiAdaptadorMain extends RecyclerView.Adapter<MiAdaptadorMain.ViewHo
                 intent.putExtra("NombreEvento",i.getNombre());
                 Bitmap bitmap = ((BitmapDrawable)holder.imgDeporte.getDrawable()).getBitmap();
                 intent.putExtra("Fondo",bitmap);
-                Log.d("bien",i.getNombre());
+                intent.putExtra("DeporteDia","no");
                 v.getContext().startActivity(intent);
             }
         });

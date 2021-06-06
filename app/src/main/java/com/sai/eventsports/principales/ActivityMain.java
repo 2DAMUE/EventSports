@@ -7,14 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sai.eventsports.SpecifyCategory;
 import com.sai.eventsports.entidades.ImagenDeporte;
 import com.sai.eventsports.recycler.MiAdaptadorMain;
 import com.sai.eventsports.R;
 
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -30,6 +35,8 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imagenDeporte = findViewById(R.id.imageDeporteDia);
 
         bnv = findViewById(R.id.nav_home);
         bnv.setSelectedItemId(R.id.navigation_home);
@@ -59,7 +66,15 @@ public class ActivityMain extends AppCompatActivity {
                 return false;
             }
         });
-
+        imagenDeporte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SpecifyCategory.class);
+                intent.putExtra("NombreEvento","Futbol");
+                intent.putExtra("DeporteDia","si");
+                startActivity(intent);
+            }
+        });
         init();
     }
 

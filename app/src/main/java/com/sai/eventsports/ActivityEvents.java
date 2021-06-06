@@ -112,6 +112,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
                     intent.putExtra("NombreEvento", nom);
                     Bitmap bitmap = ((BitmapDrawable) SpecifyCategory.fondo.getDrawable()).getBitmap();
                     intent.putExtra("Fondo",bitmap);
+                    intent.putExtra("DeporteDia","no");
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

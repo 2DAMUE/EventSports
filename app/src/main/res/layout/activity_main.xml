@@ -35,7 +35,7 @@
         android:text="@string/otros"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintTop_toBottomOf="@id/imageDeporteDia"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
@@ -48,13 +48,13 @@
         android:src="@drawable/baseline_east_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.967"
-        app:layout_constraintTop_toBottomOf="@id/imageView2"
+        app:layout_constraintTop_toBottomOf="@id/imageDeporteDia"
         app:layout_constraintStart_toEndOf="@+id/txtOtros" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView2"
-        android:layout_width="355dp"
-        android:layout_height="354dp"
+        android:id="@+id/imageDeporteDia"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:src="@drawable/futbol"
         android:layout_marginTop="70dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -90,11 +90,11 @@
         android:text="@string/deporte_del_dia"
         android:textColor="@color/white"
         android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageDeporteDia"
+        app:layout_constraintEnd_toEndOf="@+id/imageDeporteDia"
         app:layout_constraintHorizontal_bias="0.056"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageDeporteDia"
+        app:layout_constraintTop_toTopOf="@+id/imageDeporteDia"
         app:layout_constraintVertical_bias="0.935" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

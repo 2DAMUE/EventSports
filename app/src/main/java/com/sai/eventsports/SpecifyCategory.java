@@ -42,11 +42,11 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
     private MiAdaptadorSC listAdapter;
     Toolbar nombre;
     boolean event = false;
-    private static final String TAG=SpecifyCategory.class.getSimpleName();
+    private static final String TAG = SpecifyCategory.class.getSimpleName();
     LinearLayout linearLayout;
     BottomSheetBehavior bottomSheetBehavoir;
     public static ImageView fondo;
-    String titulo="";
+    String titulo = "";
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -62,16 +62,21 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         }
         int res = extras.getInt("resourseInt");
 
-        Log.d("Bien",titulo+"");
-        nombre=findViewById(R.id.toolbar_specify_category);
+        Log.d("Bien", titulo + "");
+        nombre = findViewById(R.id.toolbar_specify_category);
         nombre.setTitle(titulo);
-        recyclerView=findViewById(R.id.recyclerEvents);
-        fondo=findViewById(R.id.fondo);
-        Bitmap bitmap = intent.getParcelableExtra("Fondo");
-        fondo.setImageBitmap(bitmap);
+        recyclerView = findViewById(R.id.recyclerEvents);
+        fondo = findViewById(R.id.fondo);
+        String si = intent.getStringExtra("DeporteDia");
+        if (si.equals("si")) {
+            fondo.setImageResource(R.drawable.futbol);
+        } else {
+            Bitmap bitmap = intent.getParcelableExtra("Fondo");
+            fondo.setImageBitmap(bitmap);
+        }
         clases = findViewById(R.id.clases);
         eventos = findViewById(R.id.eventos);
-        linearLayout= findViewById(R.id.bottomSheet);
+        linearLayout = findViewById(R.id.bottomSheet);
 
         SpannableString clasess = new SpannableString("Clases");
         clasess.setSpan(new UnderlineSpan(), 0, clasess.length(), 0);
@@ -79,37 +84,37 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         eventoss.setSpan(new UnderlineSpan(), 0, eventoss.length(), 0);
         Drawable drawable = fondo.getDrawable();
 
-        event=false;
+        event = false;
 
-        bottomSheetBehavoir=BottomSheetBehavior.from(linearLayout);
+        bottomSheetBehavoir = BottomSheetBehavior.from(linearLayout);
         bottomSheetBehavoir.setDraggable(true);
-        Log.d("estado",bottomSheetBehavoir.getState()+"");
+        Log.d("estado", bottomSheetBehavoir.getState() + "");
         recyclerView.setVisibility(View.INVISIBLE);
 
         bottomSheetBehavoir.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                Log.d("estado",bottomSheetBehavoir.getState()+"");
-                switch(newState){
-                        case BottomSheetBehavior.STATE_EXPANDED:
-                            drawable.setColorFilter(Color.BLACK,PorterDuff.Mode.OVERLAY);
-                            fondo.setImageDrawable(drawable);
-                            recyclerView.setVisibility(View.VISIBLE);
-                            bottomSheetBehavoir.setDraggable(true);
-                            break;
-                            case BottomSheetBehavior.STATE_COLLAPSED:
-                                drawable.clearColorFilter();
-                                clas=false;
-                                recyclerView.setVisibility(View.INVISIBLE);
-                                clases.setText("Clases");
-                                clases.setTypeface(null, 0);
-                                clases.setAlpha(1f);
-                                event=false;
-                                eventos.setText("Eventos");
-                                eventos.setAlpha(1f);
-                                eventos.setTypeface(null, 0);
-                                bottomSheetBehavoir.setDraggable(false);
-                                break;
+                Log.d("estado", bottomSheetBehavoir.getState() + "");
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        drawable.setColorFilter(Color.BLACK, PorterDuff.Mode.OVERLAY);
+                        fondo.setImageDrawable(drawable);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        bottomSheetBehavoir.setDraggable(true);
+                        break;
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        drawable.clearColorFilter();
+                        clas = false;
+                        recyclerView.setVisibility(View.INVISIBLE);
+                        clases.setText("Clases");
+                        clases.setTypeface(null, 0);
+                        clases.setAlpha(1f);
+                        event = false;
+                        eventos.setText("Eventos");
+                        eventos.setAlpha(1f);
+                        eventos.setTypeface(null, 0);
+                        bottomSheetBehavoir.setDraggable(false);
+                        break;
                 }
                 CollectData.recogerEventos(comunicacion);
             }
@@ -123,20 +128,20 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         clases.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!clas){
-                    clas=true;
+                if (!clas) {
+                    clas = true;
                     clases.setText(clasess);
                     eventos.setAlpha(0.1f);
                     clases.setTypeface(null, 3);
-                }else{
-                    clas=false;
+                } else {
+                    clas = false;
                     clases.setText("Clases");
                     eventos.setAlpha(1f);
                     clases.setTypeface(null, 0);
                 }
-                if(bottomSheetBehavoir.getState()!=BottomSheetBehavior.STATE_EXPANDED){
+                if (bottomSheetBehavoir.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavoir.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }else{
+                } else {
                     bottomSheetBehavoir.setState(4);
                 }
 
@@ -145,20 +150,20 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         eventos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!event){
-                    event=true;
+                if (!event) {
+                    event = true;
                     eventos.setText(eventoss);
                     clases.setAlpha(0.1f);
                     eventos.setTypeface(null, 3);
-                }else{
-                    event=false;
+                } else {
+                    event = false;
                     eventos.setText("Eventos");
                     clases.setAlpha(1f);
                     eventos.setTypeface(null, 0);
                 }
-                if(bottomSheetBehavoir.getState()!=BottomSheetBehavior.STATE_EXPANDED){
+                if (bottomSheetBehavoir.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                     bottomSheetBehavoir.setState(BottomSheetBehavior.STATE_EXPANDED);
-                }else{
+                } else {
                     bottomSheetBehavoir.setState(4);
                 }
 
@@ -168,15 +173,16 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
     }
 
     @Override
-    public void mandarUsuarios(List<User> users){}
+    public void mandarUsuarios(List<User> users) {
+    }
 
     @Override
     public void mandarEventos(List<Evento> eventos) {
-        listAdapter=new MiAdaptadorSC(null);
+        listAdapter = new MiAdaptadorSC(null);
         List<Evento> ents = new ArrayList<>();
         List<Evento> clases = new ArrayList<>();
-        for (Evento e:eventos) {
-            if(e.getDeporte().equals(titulo)) {
+        for (Evento e : eventos) {
+            if (e.getDeporte().equals(titulo)) {
                 Log.d("Evento", e.getTipo());
                 if (e.getTipo().equals("Evento")) {
                     ents.add(e);
@@ -186,14 +192,14 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
             }
         }
         //If depende del boton clicado
-            //eventos
-        if(event) {
+        //eventos
+        if (event) {
             listAdapter = new MiAdaptadorSC(ents);
-        }else{
+        } else {
             listAdapter = new MiAdaptadorSC(clases);
         }
-        Log.d("ada",listAdapter.toString());
-        Log.d("ada",event+"");
+        Log.d("ada", listAdapter.toString());
+        Log.d("ada", event + "");
 
         //recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
