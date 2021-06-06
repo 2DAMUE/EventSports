@@ -65,7 +65,11 @@
         <activity
             android:name=".splash_login_register.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SpecifyCategory"
@@ -78,18 +82,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ActivitySettings"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ActivityChangeUser"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".splash_login_register.ActivityChangePhone"
+            android:name=".ActivityChangePhone"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ActivityPDF"

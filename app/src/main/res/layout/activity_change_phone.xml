@@ -73,7 +73,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="82dp"
                 android:text="@string/field_old_phone"
-                android:textColor="@color/black" />
+                android:textColor="@color/colorAccent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edtxt_oldPhone"
@@ -81,15 +81,12 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 app:boxBackgroundColor="@color/whiteTextColor"
+                app:startIconDrawable="@drawable/ic_phone"
                 app:errorEnabled="true">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/modifiedEditText"
-                    android:paddingStart="2dp"
-                    android:hint=""
-                    android:inputType="textPassword" />
+                    style="@style/modifiedEditText"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +97,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="22dp"
                 android:text="@string/field_new_phone"
-                android:textColor="@color/black"
+                android:textColor="@color/colorAccent"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -108,17 +105,14 @@
                 style="@style/parent"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                app:startIconDrawable="@drawable/ic_phone"
                 app:boxBackgroundColor="@color/whiteTextColor"
                 app:errorEnabled="true">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/modifiedEditText"
-                    android:paddingStart="2dp"
-                    android:hint=""
-                    android:textColorHint="@color/colorAccent"
-                    android:inputType="textPassword" />
+                    android:textColorHint="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
