@@ -9,35 +9,46 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.sai.eventsports.entidades.Apuntate;
 import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.entidades.User;
+import com.sai.eventsports.principales.ActivityMaps;
+import com.sai.eventsports.principales.ActivityProfile;
+import com.sai.eventsports.splash_login_register.ActivityLogIn;
 
 import java.util.List;
 
 public class ActivityEvents extends AppCompatActivity implements CollectData.ComunicacionVista {
 
     private TextView toolbar;
-    private TextView deporte, direccion, descripcion, username, email, tarjeta, tarjetaText;
+    private TextView deporte, direccion, descripcion, username, email, tarjetaText;
+    private EditText tarjeta;
     private ImageView imgEvento, imgUser, vuelta;
-    private String titulo, UserId, nom;
+    private String titulo, UserId, nom, lugar;
     private CollectData.ComunicacionVista comunicacionVista = this;
     private RadioButton rb1, rb2;
     private Button btn_apuntate, btn_chat;
+    private LinearLayout verMapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+
         Intent intent = getIntent();
         titulo = intent.getStringExtra("NombreEvento");
         UserId = intent.getStringExtra("UserIdEvento");
         nom = intent.getStringExtra("Deporte");
+        lugar = intent.getStringExtra("Lugar");
 
         toolbar = findViewById(R.id.toolbar_events);
         deporte = findViewById(R.id.textDeporte);
@@ -54,9 +65,10 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
         rb2 = findViewById(R.id.radioButton2);
         btn_apuntate = findViewById(R.id.button3);
         btn_chat = findViewById(R.id.button2);
+        verMapa = findViewById(R.id.verMapa);
 
-        CollectData.traerEvento(comunicacionVista,UserId,titulo);
-        CollectData.traerUsuario(comunicacionVista,UserId);
+        CollectData.traerEvento(comunicacionVista, UserId, titulo);
+        CollectData.traerUsuario(comunicacionVista, UserId);
 
         toolbar.setText(titulo);
         Glide.with(getApplicationContext())
@@ -74,7 +86,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(rb2.isChecked()){
+                if (rb2.isChecked()) {
                     tarjeta.setVisibility(View.INVISIBLE);
                     tarjetaText.setVisibility(View.INVISIBLE);
                 }
@@ -83,7 +95,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(rb1.isChecked()){
+                if (rb1.isChecked()) {
                     tarjeta.setVisibility(View.VISIBLE);
                     tarjetaText.setVisibility(View.VISIBLE);
                 }
@@ -92,21 +104,47 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
         vuelta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityEvents.this,SpecifyCategory.class);
-                intent.putExtra("NombreEvento",nom);
+                if (lugar.equals("sc")) {
+                    Intent intent = new Intent(ActivityEvents.this, SpecifyCategory.class);
+                    intent.putExtra("NombreEvento", nom);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(ActivityEvents.this, ActivityProfile.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        btn_apuntate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Apuntate apuntate = new Apuntate(ActivityLogIn.USERUID, titulo, UserId);
+                CollectData.subirApuntate(apuntate);
+                Toast.makeText(ActivityEvents.this, "Apuntado!!!!!!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        btn_chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityEvents.this, ActivityChat.class);
+                intent.putExtra("Titulo", titulo);
+                intent.putExtra("id", UserId);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
-        btn_chat.setOnClickListener(new View.OnClickListener() {
+        verMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityEvents.this,ActivityChat.class);
-                intent.putExtra("Titulo",titulo);
+                Intent intent = new Intent(getApplicationContext(), ActivityMaps.class);
                 intent.putExtra("id",UserId);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("titulo",titulo);
                 startActivity(intent);
             }
         });
@@ -114,7 +152,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
 
     @Override
     public void mandarEvento(List<Evento> eventos) {
-        for (Evento e:eventos) {
+        for (Evento e : eventos) {
             deporte.setText(e.getDeporte());
             direccion.setText(e.getDireccion());
             descripcion.setText(e.getDescripcion());
@@ -123,7 +161,7 @@ public class ActivityEvents extends AppCompatActivity implements CollectData.Com
 
     @Override
     public void mandarUsuario(List<User> user) {
-        for (User u:user) {
+        for (User u : user) {
             username.setText(u.getUser());
             email.setText(u.getEmail());
         }

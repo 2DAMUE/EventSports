@@ -23,6 +23,8 @@
     <string name="deporte_del_dia">Deporte del dia</string>
     <!-- PROFILE -->
     <string name="profile">Perfil</string>
+    <string name="actividades_apuntadas">Actividades Apuntadas</string>
+    <string name="publicaciones">Publicaciones</string>
     <!-- NEW EVENT -->
     <string name="new_event">Nuevo Evento o Clase</string>
     <string name="escoge_una_imagen_para_su_evento">Escoja una imagen para su Evento/Clase:</string>
@@ -60,6 +62,7 @@
     <string name="tarjeta">Tarjeta:</string>
     <string name="tarjeta2">Tarjeta</string>
     <string name="efectivo">Efectivo</string>
+    <string name="ver_en_el_mapa"><![CDATA[Ver en el mapa -->]]></string>
     <!--strings of the activity_settings -->
     <!--account -->
     <string name="account">Cuenta</string>

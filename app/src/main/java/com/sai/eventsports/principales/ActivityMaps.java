@@ -41,6 +41,7 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
     private static final int REQUEST_CODE = 101;
     private FloatingActionButton find_Location;
     private CollectData.Comunicacion comunicacion = this;
+    private String id, tituloEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,11 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
 
         find_Location = findViewById(R.id.fab);
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        tituloEvent = intent.getStringExtra("titulo");
+
         bnv = findViewById(R.id.nav_maps);
         bnv.setSelectedItemId(R.id.navigation_maps);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -151,7 +157,7 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
             // Add a marker in Sydney and move the camera
             LatLng ubi = new LatLng(latitud, longitud);
             mMap.addMarker(new MarkerOptions().position(ubi).title("Mi Ubicación").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi,10));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi, 15));
         }
     }
 
@@ -170,6 +176,7 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
                     .title(titulo)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
         }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi, 7));
     }
 
     @Override
@@ -183,8 +190,34 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void mandarEventos(List<Evento> eventos) {
-        for (Evento e:eventos) {
-            drawLocationEvents(e.getLatitud(),e.getLongitud(),e.getTipo(),e.getNombre(),e.getUserid());
+        Evento evento = new Evento();
+        for (Evento e : eventos) {
+            if (e.getUserid().equals(id) && e.getNombre().equals(tituloEvent)) {
+                evento = e;
+            } else {
+                drawLocationEvents(e.getLatitud(), e.getLongitud(), e.getTipo(), e.getNombre(), e.getUserid());
+            }
+        }
+        drawLocationEventsZoom(evento);
+    }
+
+    private void drawLocationEventsZoom(Evento e) {
+        if (e.getUserid() != null) {
+            //Aqui se pasan las coordenadas
+            LatLng ubi = new LatLng(e.getLatitud(), e.getLongitud());
+            //Aqui dirigimos la camara a la ubicacion
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(ubi));
+            //Esto es el marcador con el titulo de ubicacion
+            if (e.getTipo().equals("Evento")) {
+                mMap.addMarker(new MarkerOptions().position(ubi)
+                        .title(e.getNombre())
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+            } else if (e.getTipo().equals("Clase")) {
+                mMap.addMarker(new MarkerOptions().position(ubi)
+                        .title(e.getNombre())
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubi, 15));
         }
     }
 }

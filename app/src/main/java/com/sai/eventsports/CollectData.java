@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.sai.eventsports.entidades.Apuntate;
 import com.sai.eventsports.entidades.Evento;
 import com.sai.eventsports.entidades.Mensaje;
 import com.sai.eventsports.entidades.User;
@@ -199,6 +200,90 @@ public class CollectData {
         });
     }
 
+    public static void subirApuntate(Apuntate apuntate) {
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference subirApuntate = myDatabase.getReference("Apuntate").child(apuntate.getUserid());
+        subirApuntate.child(apuntate.getId() + "-" + apuntate.getTitulo()).setValue(apuntate);
+    }
+
+    public static void traerApuntate(ComunicacionApuntate comunicacionApuntate, String useruid) {
+        List<Apuntate> deportes = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerApuntate = myDatabase.getReference("Apuntate").child(useruid);
+        traerApuntate.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> datos = snapshot.getChildren();
+                for (DataSnapshot d: datos) {
+                    Apuntate a = d.getValue(Apuntate.class);
+                    deportes.add(a);
+                }
+                comunicacionApuntate.mandarApuntate(deportes);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public static void recogerEventosApuntate(ComunicacionApuntate comunicacionApuntate) {
+        List<Evento> eventos = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerEvents = myDatabase.getReference("Eventos");
+        traerEvents.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> datos = snapshot.getChildren();
+                for (DataSnapshot d: datos) {
+                    Evento e = d.getValue(Evento.class);
+                    eventos.add(e);
+                }
+                comunicacionApuntate.mandarEventos(eventos);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public static void traerEventoApuntate(ComunicacionApuntate comunicacionApuntate, String id, String titulo) {
+        List<Evento> evento = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerUser = myDatabase.getReference("Eventos").child(id + "-" + titulo);
+        traerUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Evento e = snapshot.getValue(Evento.class);
+                evento.add(e);
+                comunicacionApuntate.mandarEvento(evento);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public static void traerUsuarioPerfil(ComunicacionApuntate comunicacionApuntate, String useruid) {
+        List<User> user = new ArrayList<>();
+        FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference traerUser = myDatabase.getReference("Users").child(useruid);
+        traerUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User u = snapshot.getValue(User.class);
+                user.add(u);
+                comunicacionApuntate.mandarUsuario(user);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
     public interface Comunicacion{
         void mandarUsuarios(List<User> users);
         void mandarEventos(List<Evento> eventos);
@@ -210,5 +295,11 @@ public class CollectData {
     public interface ComunicacionChat{
         void mandarUsuario(List<User> user);
         void madarChat(List<Mensaje> listaChat);
+    }
+    public interface ComunicacionApuntate{
+        void mandarApuntate(List<Apuntate> deportes);
+        void mandarEventos(List<Evento> eventos);
+        void mandarEvento(List<Evento> evento);
+        void mandarUsuario(List<User> user);
     }
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.sai.eventsports.entidades.Mensaje;
 import com.sai.eventsports.entidades.User;
+import com.sai.eventsports.principales.ActivityMain;
 import com.sai.eventsports.recycler.MiAdaptadorChat;
 import com.sai.eventsports.recycler.MiAdaptadorCommunity;
 import com.sai.eventsports.splash_login_register.ActivityLogIn;
@@ -31,6 +32,7 @@ public class ActivityChat extends AppCompatActivity implements CollectData.Comun
     private CollectData.ComunicacionChat comunicacionChat = this;
     private MiAdaptadorChat listAdapter;
     private List<Mensaje> listaMensajes;
+    private ImageView imagepatras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class ActivityChat extends AppCompatActivity implements CollectData.Comun
         recyclerViewChat = findViewById(R.id.recycler_chat);
         btnEnviar = findViewById(R.id.btn_chat);
         gestor = new LinearLayoutManager(this);
+        imagepatras = findViewById(R.id.vuelta);
 
         Intent intent = getIntent();
         titulo = intent.getStringExtra("Titulo");
@@ -77,6 +80,13 @@ public class ActivityChat extends AppCompatActivity implements CollectData.Comun
                         }
                     }, 100);
                 }
+            }
+        });
+
+        imagepatras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ActivityMain.class));
             }
         });
     }
