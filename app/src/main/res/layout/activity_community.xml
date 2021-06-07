@@ -8,8 +8,10 @@
     tools:context=".principales.ActivityCommunity">
 
     <LinearLayout
+        android:id="@+id/linercom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
@@ -33,7 +35,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recicler_community"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
