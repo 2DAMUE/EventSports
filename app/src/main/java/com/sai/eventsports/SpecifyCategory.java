@@ -183,7 +183,6 @@ public class SpecifyCategory extends AppCompatActivity implements CollectData.Co
         List<Evento> clases = new ArrayList<>();
         for (Evento e : eventos) {
             if (e.getDeporte().equals(titulo)) {
-                Log.d("Evento", e.getTipo());
                 if (e.getTipo().equals("Evento")) {
                     ents.add(e);
                 } else {
