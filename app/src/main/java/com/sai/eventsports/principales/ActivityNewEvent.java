@@ -145,7 +145,9 @@ public class ActivityNewEvent extends AppCompatActivity {
                     localidad.setError("Escriba una Localidad");
                 } else if (TextUtils.isEmpty(desc)) {
                     descripcion.setError("Escriba una Descripción");
-                } else {
+                } else if (!rbEvento.isChecked() && !rbClase.isChecked()){
+                    Toast.makeText(getApplicationContext(), "Escoja un Tipo", Toast.LENGTH_SHORT).show();
+                } else{
                     double[] coordenadas = Util.takeCoordenadas(context, dir, numerito, loca);
                     double latitud = coordenadas[0];
                     double longitud = coordenadas[1];
